@@ -1,5 +1,6 @@
 package com.dpfht.android.democityweather.framework.di.module
 
+import android.content.Context
 import com.dpfht.android.democityweather.data.datasource.RemoteDataSource
 import com.dpfht.android.democityweather.framework.BuildConfig
 import com.dpfht.android.democityweather.framework.Constants
@@ -9,6 +10,7 @@ import com.dpfht.android.democityweather.framework.data.datasource.remote.rest.R
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -61,7 +63,7 @@ class NetworkModule {
 
   @Provides
   @Singleton
-  fun provideRemoteDataSource(restService: RestService): RemoteDataSource {
-    return RemoteDataSourceImpl(restService)
+  fun provideRemoteDataSource(@ApplicationContext context: Context, restService: RestService): RemoteDataSource {
+    return RemoteDataSourceImpl(context, restService)
   }
 }

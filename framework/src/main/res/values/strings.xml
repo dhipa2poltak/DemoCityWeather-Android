@@ -7,4 +7,7 @@
   <string name="framework_failed_add_city_weather">failed to add city weather</string>
   <string name="framework_failed_delete_city_weather">failed to delete city weather</string>
   <string name="framework_text_weather">Weather</string>
+  <string name="framework_text_error_connection">error in connection</string>
+  <string name="framework_text_http_error">http error</string>
+  <string name="framework_text_error_conversion">error in conversion</string>
 </resources>
