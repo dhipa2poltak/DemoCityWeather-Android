@@ -7,8 +7,9 @@ import com.dpfht.android.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.android.democityweather.domain.entity.CurrentWeatherDomain
 import com.dpfht.android.democityweather.domain.entity.Result
 import com.dpfht.android.democityweather.domain.usecase.GetCurrentWeatherUseCase
+import com.dpfht.android.democityweather.domain.util.WeatherUtil
 import com.dpfht.android.democityweather.feature_city_weather.databinding.LayoutRowCityWeatherBinding
-import com.dpfht.android.democityweather.feature_city_weather.util.WeatherUtil
+import com.dpfht.android.democityweather.feature_city_weather.util.ResourceUtil
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -67,13 +68,11 @@ class CityWeatherAdapter @Inject constructor(
 
     if (currentWeather.weathers.isNotEmpty()) {
       val description = currentWeather.weathers[0].description
-      binding.iconTemp.setAnimation(WeatherUtil.getAnimationResourceForWeatherDescription(description))
+      binding.iconTemp.setAnimation(ResourceUtil.getAnimationResourceForWeatherDescription(description))
     }
   }
 
-  private fun onErrorGetCurrentWeather(message: String) {
-
-  }
+  private fun onErrorGetCurrentWeather(message: String) {}
 
   override fun getItemCount(): Int {
     return cityWeathers.size

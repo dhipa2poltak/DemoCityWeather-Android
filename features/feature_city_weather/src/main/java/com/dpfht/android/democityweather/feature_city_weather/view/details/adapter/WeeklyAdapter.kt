@@ -3,17 +3,17 @@ package com.dpfht.android.democityweather.feature_city_weather.view.details.adap
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.dpfht.android.democityweather.domain.entity.vw_entity.ForecastWeeklyVWEntity
+import com.dpfht.android.democityweather.domain.util.WeatherUtil
 import com.dpfht.android.democityweather.feature_city_weather.databinding.LayoutRowWeeklyBinding
-import com.dpfht.android.democityweather.feature_city_weather.util.WeatherUtil
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.WeeklyAdapter.ViewHolder
-import com.dpfht.android.democityweather.feature_city_weather.view.details.model.WeeklyVWModel
 import javax.inject.Inject
 
 class WeeklyAdapter @Inject constructor(
 
 ): RecyclerView.Adapter<ViewHolder>() {
 
-  lateinit var weeklyModels: List<WeeklyVWModel>
+  lateinit var weeklyVWEntities: List<ForecastWeeklyVWEntity>
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val binding = LayoutRowWeeklyBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -22,7 +22,7 @@ class WeeklyAdapter @Inject constructor(
   }
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    val weeklyModel = weeklyModels[position]
+    val weeklyModel = weeklyVWEntities[position]
 
     holder.binding.tvDay.text = weeklyModel.day
     if (weeklyModel.minTemperature != -999.0) {
@@ -38,7 +38,7 @@ class WeeklyAdapter @Inject constructor(
   }
 
   override fun getItemCount(): Int {
-    return weeklyModels.size
+    return weeklyVWEntities.size
   }
 
   class ViewHolder(val binding: LayoutRowWeeklyBinding): RecyclerView.ViewHolder(binding.root)
