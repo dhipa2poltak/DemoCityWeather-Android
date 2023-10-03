@@ -1,0 +1,20 @@
+package com.dpfht.android.democityweather.framework.data.datasource.local.room.dao
+
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import com.dpfht.android.democityweather.framework.data.datasource.local.room.model.CityWeatherDBModel
+
+@Dao
+interface CityWeatherDao {
+
+  @Query("SELECT * FROM tbl_city_weather")
+  fun getAllCityWeather(): List<CityWeatherDBModel>
+
+  @Insert
+  suspend fun insertCityWeather(cityWeather: CityWeatherDBModel): Long
+
+  @Delete
+  suspend fun deleteCityWeather(cityWeather: CityWeatherDBModel)
+}

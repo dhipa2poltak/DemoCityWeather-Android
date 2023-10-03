@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="framework_failed_get_all_city">failed to get all city</string>
+  <string name="framework_failed_to_get_country">failed to get country with country code:</string>
+  <string name="framework_cannot_save_country">cannot save country with country code:</string>
+  <string name="framework_failed_get_all_city_weather">failed to get all city weather</string>
+  <string name="framework_failed_add_city_weather">failed to add city weather</string>
+  <string name="framework_failed_delete_city_weather">failed to delete city weather</string>
+  <string name="framework_text_weather">Weather</string>
+</resources>

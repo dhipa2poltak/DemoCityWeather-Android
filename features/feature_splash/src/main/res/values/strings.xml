@@ -1,0 +1,7 @@
+<resources>
+
+  <string name="splash_app_name">Demo City Weather</string>
+  <string name="splash_text_loading">loading…</string>
+  <string name="splash_image_desc_logo">splash logo</string>
+  <string name="splash_init_db">initializing database…</string>
+</resources>

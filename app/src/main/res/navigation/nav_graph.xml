@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+  <fragment
+      android:id="@+id/splashFragment"
+      android:name="com.dpfht.android.democityweather.feature_splash.view.SplashFragment"
+      tools:layout="@layout/fragment_splash">
+
+  </fragment>
+
+  <fragment
+      android:id="@+id/listCityWeatherFragment"
+      android:name="com.dpfht.android.democityweather.feature_city_weather.view.list.ListCityWeatherFragment"
+      tools:layout="@layout/fragment_list_city_weather">
+
+    <action
+        android:id="@+id/action_list_to_details_navigation"
+        app:destination="@+id/detailsCityWeatherFragment" />
+  </fragment>
+
+  <fragment
+      android:id="@+id/detailsCityWeatherFragment"
+      android:name="com.dpfht.android.democityweather.feature_city_weather.view.details.DetailsCityWeatherFragment"
+      tools:layout="@layout/fragment_details_city_weather"/>
+
+  <dialog
+      android:id="@+id/errorMessageDialogFragment"
+      android:name="com.dpfht.android.democityweather.feature_error_message.ErrorMessageDialogFragment"
+      android:label="fragment_error_message_dialog"
+      tools:layout="@layout/fragment_error_message_dialog">
+
+    <deepLink
+        app:uri="android-app://com.dpfht.android.democityweather/error_message_dialog_fragment?message={message}" />
+
+    <argument
+        android:name="message"
+        android:defaultValue="no message"
+        app:argType="string"  />
+  </dialog>
+</navigation>
