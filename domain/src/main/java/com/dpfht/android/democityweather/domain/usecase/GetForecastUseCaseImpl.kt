@@ -15,7 +15,7 @@ class GetForecastUseCaseImpl(
   private val appRepository: AppRepository
 ): GetForecastUseCase {
 
-  private val maxHourlyData = 6
+  private val minHourlyData = 6
 
   override suspend operator fun invoke(cityWeather: CityWeatherEntity): Result<ForecastVWEntity> {
     return when (val result = appRepository.getForecast(cityWeather)) {
@@ -47,7 +47,7 @@ class GetForecastUseCaseImpl(
       val timeForecast = formatDefault.parse(sLocalTimeForecast)
       val sDayForecast = formatDay.format(timeForecast)
 
-      if (sDayForecast == sNow || list.size < maxHourlyData) {
+      if (sDayForecast == sNow || list.size < minHourlyData) {
         val sTimeForecast = formatTimeCustom.format(timeForecast)
         var sTemperature = ""
 
