@@ -32,10 +32,10 @@ Get the api key from [openweathermap.org](https://openweathermap.org/).
 
 Create file namely “key.properties” in the root project with following contents:
 
-storePassword=<your_keystore_password>
-keyPassword=<your_key_password>
-keyAlias=<your_key_alias>
-storeFile=<path_to_keystore_file>
-apiKey=<your_api_key>
+storePassword=<your_keystore_password> <br />
+keyPassword=<your_key_password> <br />
+keyAlias=<your_key_alias> <br />
+storeFile=<path_to_keystore_file> <br />
+apiKey=<your_api_key> <br />
 
 once you have created it, open the project with Android Studio, build the project and run.
