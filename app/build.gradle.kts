@@ -53,8 +53,8 @@ android {
       applicationIdSuffix = ".debug"
       versionNameSuffix = "-debug"
 
-      manifestPlaceholders["appNameSuffix"] = " (debug)"
-      resValue("string", "running_mode", " (debug)")
+      manifestPlaceholders["appNameSuffix"] = "-(debug)"
+      resValue("string", "running_mode", "-(debug)")
     }
   }
 
