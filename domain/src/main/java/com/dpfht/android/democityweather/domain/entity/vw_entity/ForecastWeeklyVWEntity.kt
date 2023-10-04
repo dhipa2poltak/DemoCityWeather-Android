@@ -4,5 +4,6 @@ data class ForecastWeeklyVWEntity(
   var minTemperature: Double = -999.0,
   var maxTemperature: Double = -999.0,
   var animationId: Int = -1,
-  val mapDesc: MutableMap<String, Int> = mutableMapOf()
+  val mapDesc: MutableMap<String, Int> = mutableMapOf(),
+  var maxDesciption: String = ""
 )

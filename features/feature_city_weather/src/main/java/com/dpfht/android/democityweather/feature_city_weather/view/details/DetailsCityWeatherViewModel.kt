@@ -122,8 +122,7 @@ class DetailsCityWeatherViewModel @Inject constructor(
     }
 
     for (weekly in forecastVWEntity.weeklyEntities) {
-      val maxEntry = weekly.mapDesc.maxWith { x, y -> x.value.compareTo(y.value) }
-      weekly.animationId = ResourceUtil.getAnimationResourceForWeatherDescription(maxEntry.key)
+      weekly.animationId = ResourceUtil.getAnimationResourceForWeatherDescription(weekly.maxDesciption)
 
       this.weeklyVWEntities.add(weekly)
       this.weeklyAdapter.notifyItemInserted(weeklyVWEntities.size - 1)

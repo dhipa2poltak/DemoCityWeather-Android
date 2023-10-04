@@ -123,6 +123,11 @@ class GetForecastUseCaseImpl(
       }
     }
 
+    for (weekly in list) {
+      val maxEntry = weekly.mapDesc.maxWith { x, y -> x.value.compareTo(y.value) }
+      weekly.maxDesciption = maxEntry.key
+    }
+
     return list
   }
 
