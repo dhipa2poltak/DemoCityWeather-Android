@@ -36,19 +36,26 @@ abstract class AppDB: RoomDatabase() {
     private val assetManager: AssetManager
   ) : Callback() {
 
+    private var isPopulatingDB = false
+
     override fun onCreate(db: SupportSQLiteDatabase) {
       super.onCreate(db)
       INSTANCE?.let { database ->
         scope.launch {
           val cityDao = database.cityDao()
+          isPopulatingDB = true
           prePopulateDatabase(cityDao)
+          isPopulatingDB = false
+          rawIsDBInitialized.onNext(true)
         }
       }
     }
 
     override fun onOpen(db: SupportSQLiteDatabase) {
       super.onOpen(db)
-      rawIsDBInitialized.onNext(true)
+      if (!isPopulatingDB) {
+        rawIsDBInitialized.onNext(true)
+      }
     }
 
     private suspend fun prePopulateDatabase(cityDao: CityDao) {
