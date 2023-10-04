@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dpfht.android.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.android.democityweather.feature_city_weather.databinding.FragmentDetailsCityWeatherBinding
 import com.dpfht.android.democityweather.feature_city_weather.di.DaggerDetailsCityWeatherComponent
+import com.dpfht.android.democityweather.framework.Constants
 import com.dpfht.android.democityweather.framework.di.dependency.NavigationServiceDependency
 import com.dpfht.android.democityweather.framework.navigation.NavigationService
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,7 +57,7 @@ class DetailsCityWeatherFragment : Fragment() {
     binding.rvWeekly.adapter = viewModel.weeklyAdapter
 
     arguments?.let {
-      val cw = it.getSerializable("CITY_WEATHER_ARG") as? CityWeatherEntity
+      val cw = it.getSerializable(Constants.FragmentArgsName.ARG_CITY_WEATHER) as? CityWeatherEntity
       if (cw != null) {
         viewModel.cityWeather = cw
         binding.tvCityName.text = cw.cityName

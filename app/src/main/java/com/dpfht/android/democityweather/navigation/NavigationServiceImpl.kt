@@ -9,6 +9,7 @@ import com.dpfht.android.democityweather.R
 import com.dpfht.android.democityweather.domain.entity.CityEntity
 import com.dpfht.android.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.android.democityweather.feature_city_weather.view.add.AddCityWeatherFragment
+import com.dpfht.android.democityweather.framework.Constants
 import com.dpfht.android.democityweather.framework.navigation.NavigationService
 
 class NavigationServiceImpl(
@@ -32,7 +33,7 @@ class NavigationServiceImpl(
 
   override fun navigateToDetailsCityWeather(cityWeather: CityWeatherEntity) {
     val args = Bundle()
-    args.putSerializable("CITY_WEATHER_ARG", cityWeather)
+    args.putSerializable(Constants.FragmentArgsName.ARG_CITY_WEATHER, cityWeather)
 
     navController.navigate(R.id.action_list_to_details_navigation, args)
   }

@@ -7,4 +7,8 @@ object Constants {
 
   const val DELAY_SPLASH = 3000L
   const val MAX_ADDED_CITY_COUNT = 10
+
+  object FragmentArgsName {
+    const val ARG_CITY_WEATHER = "arg_city_weather"
+  }
 }
