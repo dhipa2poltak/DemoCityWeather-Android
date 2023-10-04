@@ -26,6 +26,16 @@
 - Proguard
 - Git
 
-**Note:**
-**To run the project in DEBUG Mode, please specify the “API_KEY” in object “Constants” (Constants.kt file) in “Framework” module in the project source code. 
-You can get the api key from [openweathermap.org](https://openweathermap.org/).**
+**To run the project in DEBUG MODE:**
+
+Get the api key from [openweathermap.org](https://openweathermap.org/).
+
+Create file namely “key.properties” in the root project with following contents:
+
+storePassword=<your_keystore_password>
+keyPassword=<your_key_password>
+keyAlias=<your_key_alias>
+storeFile=<path_to_keystore_file>
+apiKey=<your_api_key>
+
+once you have created it, open the project with Android Studio, build the project and run.
