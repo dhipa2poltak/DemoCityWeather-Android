@@ -10,5 +10,6 @@ object Constants {
 
   object FragmentArgsName {
     const val ARG_CITY_WEATHER = "arg_city_weather"
+    const val ARG_MESSAGE = "message"
   }
 }

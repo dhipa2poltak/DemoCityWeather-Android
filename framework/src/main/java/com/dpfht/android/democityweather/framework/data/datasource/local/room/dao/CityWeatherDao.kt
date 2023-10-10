@@ -1,7 +1,6 @@
 package com.dpfht.android.democityweather.framework.data.datasource.local.room.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.dpfht.android.democityweather.framework.data.datasource.local.room.model.CityWeatherDBModel

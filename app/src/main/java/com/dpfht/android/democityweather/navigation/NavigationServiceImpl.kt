@@ -43,7 +43,7 @@ class NavigationServiceImpl(
     builder.scheme("android-app")
       .authority("com.dpfht.android.democityweather")
       .appendPath("error_message_dialog_fragment")
-      .appendQueryParameter("message", message)
+      .appendQueryParameter(Constants.FragmentArgsName.ARG_MESSAGE, message)
 
     navController.navigate(
       NavDeepLinkRequest.Builder
