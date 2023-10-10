@@ -11,8 +11,8 @@ java {
 dependencies {
   implementation(project(":domain"))
 
-  implementation("com.google.code.gson:gson:2.9.0")
-  implementation("io.reactivex.rxjava3:rxkotlin:3.0.1")
+  implementation(Deps.gson)
+  implementation(Deps.rxKotlin)
 
-  implementation("androidx.annotation:annotation:1.7.0")
+  implementation(Deps.annotation)
 }

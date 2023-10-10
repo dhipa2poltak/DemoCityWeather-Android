@@ -16,7 +16,7 @@ plugins {
 
 android {
   namespace = "com.dpfht.android.democityweather"
-  compileSdk = 33
+  compileSdk = ConfigData.compileSdkVersion
 
   signingConfigs {
     create("release") {
@@ -28,8 +28,8 @@ android {
   }
 
   defaultConfig {
-    minSdk = 21
-    targetSdk = 33
+    minSdk = ConfigData.minSdkVersion
+    targetSdk = ConfigData.targetSdkVersion
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -63,16 +63,16 @@ android {
   productFlavors {
     create("prod") {
       applicationId = "com.dpfht.android.democityweather"
-      versionCode = 2
-      versionName = "1.1"
+      versionCode = ConfigData.versionCode
+      versionName = ConfigData.versionName
 
       manifestPlaceholders["appName"] = "Demo City Weather"
       resValue("string", "app_name", "Demo City Weather")
     }
     create("dev") {
       applicationId = "com.dpfht.android.democityweather.dev"
-      versionCode = 2
-      versionName = "1.1"
+      versionCode = ConfigData.versionCodeDev
+      versionName = ConfigData.versionNameDev
 
       manifestPlaceholders["appName"] = "Demo City Weather (DEV)"
       resValue("string", "app_name", "Demo City Weather (DEV)")
@@ -101,17 +101,17 @@ dependencies {
   implementation(project(":features:feature_error_message"))
   implementation(project(":features:feature_city_weather"))
 
-  implementation("androidx.core:core-ktx:1.9.0")
-  implementation("androidx.appcompat:appcompat:1.6.1")
-  implementation("com.google.android.material:material:1.9.0")
-  implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-  testImplementation("junit:junit:4.13.2")
-  androidTestImplementation("androidx.test.ext:junit:1.1.5")
-  androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+  implementation(Deps.coreKtx)
+  implementation(Deps.appCompat)
+  implementation(Deps.material)
+  implementation(Deps.constraintLayout)
+  testImplementation(Deps.jUnit)
+  androidTestImplementation(Deps.jUnitExt)
+  androidTestImplementation(Deps.espresso)
 
-  implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-  implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+  implementation(Deps.navigationFragment)
+  implementation(Deps.navigationUi)
 
-  implementation("com.google.dagger:hilt-android:2.44")
-  kapt("com.google.dagger:hilt-compiler:2.44")
+  implementation(Deps.hilt)
+  kapt(Deps.hiltCompiler)
 }
