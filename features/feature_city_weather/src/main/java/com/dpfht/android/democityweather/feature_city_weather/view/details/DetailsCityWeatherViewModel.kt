@@ -94,7 +94,7 @@ class DetailsCityWeatherViewModel @Inject constructor(
 
   private fun onErrorGetCurrentWeather(message: String) {
     _modalMessage.value = message
-    _modalMessage.value = ""
+    _modalMessage.postValue("")
   }
 
   private fun getForecast() {
@@ -133,7 +133,7 @@ class DetailsCityWeatherViewModel @Inject constructor(
 
   private fun onErrorGetForecast(message: String) {
     _modalMessage.value = message
-    _modalMessage.value = ""
+    _modalMessage.postValue("")
     _isShowDialogLoading.value = false
   }
 

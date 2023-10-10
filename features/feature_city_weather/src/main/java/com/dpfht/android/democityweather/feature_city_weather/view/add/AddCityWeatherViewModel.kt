@@ -58,6 +58,6 @@ class AddCityWeatherViewModel @Inject constructor(
   private fun onErrorGetAllCity(message: String) {
     _isShowDialogLoading.value = false
     _toastMessage.value = message
-    _toastMessage.value = ""
+    _toastMessage.postValue("")
   }
 }

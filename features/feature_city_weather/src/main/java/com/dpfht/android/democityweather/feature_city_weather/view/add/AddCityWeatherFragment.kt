@@ -52,9 +52,7 @@ class AddCityWeatherFragment : BottomSheetDialogFragment() {
   }
 
   private fun observeViewModel() {
-    viewModel.isShowDialogLoading.observe(viewLifecycleOwner) {
-      //binding.clProgressBar.visibility = if (isShow) View.VISIBLE else View.GONE
-    }
+    viewModel.isShowDialogLoading.observe(viewLifecycleOwner) {}
 
     viewModel.toastMessage.observe(viewLifecycleOwner) { msg ->
       if (msg.isNotEmpty()) {
