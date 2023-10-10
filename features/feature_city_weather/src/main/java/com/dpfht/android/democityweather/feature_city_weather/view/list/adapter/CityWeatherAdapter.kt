@@ -22,7 +22,7 @@ class CityWeatherAdapter @Inject constructor(
   lateinit var scope: CoroutineScope
 
   var onClickRowCityWeather: ((cityWeather: CityWeatherEntity) -> Unit)? = null
-  var onDeleteCityWeather: ((position: Int, cityWeather: CityWeatherEntity) -> Unit)? = null
+  var onDeleteCityWeather: ((cityWeather: CityWeatherEntity) -> Unit)? = null
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val binding = LayoutRowCityWeatherBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -38,7 +38,7 @@ class CityWeatherAdapter @Inject constructor(
     getCurrentWeather(holder.binding, cityWeather)
 
     holder.binding.ivDelete.setOnClickListener {
-      onDeleteCityWeather?.let { it(position, cityWeather) }
+      onDeleteCityWeather?.let { it(cityWeather) }
     }
 
     holder.binding.root.setOnClickListener {

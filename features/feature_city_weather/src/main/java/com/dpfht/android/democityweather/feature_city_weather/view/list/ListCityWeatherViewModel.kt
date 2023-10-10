@@ -76,12 +76,14 @@ class ListCityWeatherViewModel @Inject constructor(
 
   private fun onErrorGetAllCityWeather(message: String) {
     _toastMessage.value = message
-    _toastMessage.value = ""
+    _toastMessage.postValue("")
     _isNoData.value = this.cityWeathers.isEmpty()
-    _isRefreshing.value = false
+    _isRefreshing.postValue(false)
   }
 
   fun addCityWeather(cityEntity: CityEntity) {
+    _isRefreshing.postValue(true)
+
     viewModelScope.launch {
       when (val result = addCityWeatherUseCase(cityEntity)) {
         is Result.Success -> {
@@ -95,22 +97,26 @@ class ListCityWeatherViewModel @Inject constructor(
   }
 
   private fun onSuccessAddCityWeather(cityWeather: CityWeatherEntity) {
+    _isRefreshing.postValue(false)
     this.cityWeathers.add(cityWeather)
     this.cityWeatherAdapter.notifyItemInserted(this.cityWeathers.size - 1)
     _isNoData.postValue(this.cityWeathers.isEmpty())
   }
 
   private fun onErrorAddCityWeather(message: String) {
+    _isRefreshing.postValue(false)
     _toastMessage.value = message
-    _toastMessage.value = ""
+    _toastMessage.postValue("")
     _isNoData.value = this.cityWeathers.isEmpty()
   }
 
-  private fun deleteCityWeather(position: Int, cityWeather: CityWeatherEntity) {
+  private fun deleteCityWeather(cityWeather: CityWeatherEntity) {
+    _isRefreshing.postValue(true)
+
     viewModelScope.launch {
       when (val result = deleteCityWeatherUseCase(cityWeather)) {
         VoidResult.Success -> {
-          onSuccessDeleteCityWeather(position)
+          onSuccessDeleteCityWeather(cityWeather)
         }
         is VoidResult.Error -> {
           onErrorDeleteCityWeather(result.message)
@@ -119,14 +125,18 @@ class ListCityWeatherViewModel @Inject constructor(
     }
   }
 
-  private fun onSuccessDeleteCityWeather(position: Int) {
-    onRefreshingData()
+  private fun onSuccessDeleteCityWeather(cityWeather: CityWeatherEntity) {
+    _isRefreshing.postValue(false)
+    val position = this.cityWeathers.indexOf(cityWeather)
+    this.cityWeathers.remove(cityWeather)
+    this.cityWeatherAdapter.notifyItemRemoved(position)
+    _isNoData.value = this.cityWeathers.isEmpty()
   }
 
   private fun onErrorDeleteCityWeather(message: String) {
+    _isRefreshing.postValue(false)
     _toastMessage.value = message
-    _toastMessage.value = ""
-    _isNoData.value = this.cityWeathers.isEmpty()
+    _toastMessage.postValue("")
     _isNoData.value = this.cityWeathers.isEmpty()
   }
 
@@ -141,6 +151,6 @@ class ListCityWeatherViewModel @Inject constructor(
 
   private fun onClickCityWeather(cityWeather: CityWeatherEntity) {
     _navigateToWeatherDetails.value = cityWeather
-    _navigateToWeatherDetails.value = null
+    _navigateToWeatherDetails.postValue(null)
   }
 }

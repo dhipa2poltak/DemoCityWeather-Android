@@ -15,6 +15,6 @@ interface CityWeatherDao {
   @Insert
   suspend fun insertCityWeather(cityWeather: CityWeatherDBModel): Long
 
-  @Delete
-  suspend fun deleteCityWeather(cityWeather: CityWeatherDBModel)
+  @Query("DELETE FROM tbl_city_weather WHERE id = :cityWeatherId")
+  suspend fun deleteCityWeather(cityWeatherId: Long)
 }

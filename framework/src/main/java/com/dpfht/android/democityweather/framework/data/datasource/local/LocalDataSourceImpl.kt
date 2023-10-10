@@ -112,17 +112,7 @@ class LocalDataSourceImpl(
   override suspend fun deleteCityWeather(cityWeatherEntity: CityWeatherEntity): VoidResult {
     return try {
       withContext(Dispatchers.IO) {
-        val dbModel = CityWeatherDBModel(
-          id = cityWeatherEntity.id,
-          idCity = cityWeatherEntity.idCity,
-          countryCode = cityWeatherEntity.countryCode,
-          cityName = cityWeatherEntity.cityName,
-          lat = cityWeatherEntity.lat,
-          lon = cityWeatherEntity.lon
-        )
-
-        appDB.cityWeatherDao().deleteCityWeather(dbModel)
-
+        appDB.cityWeatherDao().deleteCityWeather(cityWeatherEntity.id)
         VoidResult.Success
       }
     } catch (e: Exception) {
