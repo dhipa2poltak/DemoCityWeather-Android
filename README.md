@@ -5,7 +5,7 @@
 | -------------------------------------------------- | ----------------------------------------- | ----------------------------------------- |
 
 **APK file:**
-**[Demo City Weather v1.1.apk](https://drive.google.com/file/d/1RupdqjGZJSZilgsYdQ2k4vvfkOA7L5l7/view?usp=sharing)**
+**[Demo City Weather v1.2.apk](https://drive.google.com/file/d/1cnrCgWbso7WGcbjOFapHENHbwsnnZmMn/view?usp=sharing)**
 
 **Technology Stack:**
 - Kotlin Programming Language
@@ -23,6 +23,7 @@
 - GSON Serialization
 - Lottie
 - Gradle build flavors
+- BuildSrc + Kotlin DSL
 - Proguard
 - Git
 
