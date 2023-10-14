@@ -5,7 +5,7 @@
 | -------------------------------------------------- | ----------------------------------------- | ----------------------------------------- |
 
 **APK file:**
-**[Demo City Weather v1.2.apk](https://drive.google.com/file/d/1cnrCgWbso7WGcbjOFapHENHbwsnnZmMn/view?usp=sharing)**
+**[Demo City Weather v1.3.apk](https://drive.google.com/file/d/1Xp6KE5q1plbelpqSsPQao8SNk85E147s/view?usp=sharing)**
 
 **Technology Stack:**
 - Kotlin Programming Language
@@ -39,4 +39,4 @@ keyAlias=<your_key_alias> <br />
 storeFile=<path_to_keystore_file> <br />
 apiKey=<your_api_key> <br />
 
-once you have created it, open the project with Android Studio, build the project and run.
+once you have created it, open the project with Android Studio, build the project and run the project.
