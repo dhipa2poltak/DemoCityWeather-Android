@@ -1,51 +1,21 @@
 package com.dpfht.android.democityweather.feature_city_weather.view.details
 
-import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dpfht.android.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.android.democityweather.feature_city_weather.R
 import com.dpfht.android.democityweather.feature_city_weather.databinding.FragmentDetailsCityWeatherBinding
-import com.dpfht.android.democityweather.feature_city_weather.di.DaggerDetailsCityWeatherComponent
 import com.dpfht.android.democityweather.framework.Constants
-import com.dpfht.android.democityweather.framework.di.dependency.NavigationServiceDependency
-import com.dpfht.android.democityweather.framework.navigation.NavigationService
+import com.dpfht.android.democityweather.framework.commons.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.EntryPointAccessors
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class DetailsCityWeatherFragment : Fragment() {
+class DetailsCityWeatherFragment : BaseFragment<FragmentDetailsCityWeatherBinding>(R.layout.fragment_details_city_weather) {
 
-  private lateinit var binding: FragmentDetailsCityWeatherBinding
   private val viewModel by viewModels<DetailsCityWeatherViewModel>()
-
-  @Inject
-  lateinit var navigationService: NavigationService
-
-  override fun onAttach(context: Context) {
-    super.onAttach(context)
-
-    DaggerDetailsCityWeatherComponent.builder()
-      .context(requireContext())
-      .navDependency(EntryPointAccessors.fromActivity(requireActivity(), NavigationServiceDependency::class.java))
-      .build()
-      .inject(this)
-  }
-
-  override fun onCreateView(
-    inflater: LayoutInflater, container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    binding = FragmentDetailsCityWeatherBinding.inflate(inflater, container, false)
-
-    return binding.root
-  }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
