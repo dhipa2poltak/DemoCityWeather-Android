@@ -1,38 +1,26 @@
 package com.dpfht.android.democityweather.feature_city_weather.view.add
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dpfht.android.democityweather.domain.entity.CityEntity
+import com.dpfht.android.democityweather.feature_city_weather.R
 import com.dpfht.android.democityweather.feature_city_weather.databinding.FragmentAddCityWeatherBinding
+import com.dpfht.android.democityweather.framework.commons.base.BaseBottomSheetDialogFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AddCityWeatherFragment : BottomSheetDialogFragment() {
+class AddCityWeatherFragment : BaseBottomSheetDialogFragment<FragmentAddCityWeatherBinding>(R.layout.fragment_add_city_weather) {
 
-  private lateinit var binding: FragmentAddCityWeatherBinding
   private val viewModel by viewModels<AddCityWeatherViewModel>()
 
   private lateinit var bottomSheetBehavior: BottomSheetBehavior<View>
-
   var onSelectCityCallback: ((cityEntity: CityEntity) -> Unit)? = null
-
-  override fun onCreateView(
-    inflater: LayoutInflater, container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    binding = FragmentAddCityWeatherBinding.inflate(inflater, container, false)
-
-    return binding.root
-  }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)

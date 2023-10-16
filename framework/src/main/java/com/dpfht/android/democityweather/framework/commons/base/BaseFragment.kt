@@ -15,11 +15,11 @@ import com.dpfht.android.democityweather.framework.navigation.NavigationService
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
-open class BaseFragment<VBD: ViewDataBinding>(
+open class BaseFragment<VDB: ViewDataBinding>(
   @LayoutRes protected val contentLayouId: Int
 ): Fragment() {
 
-  protected lateinit var binding: VBD
+  protected lateinit var binding: VDB
 
   @Inject
   protected lateinit var navigationService: NavigationService
