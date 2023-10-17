@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-open class BaseBottomSheetDialogFragment<VDB: ViewDataBinding>(
-  @LayoutRes protected val contentLayouId: Int
+abstract class BaseBottomSheetDialogFragment<VDB: ViewDataBinding>(
+  @LayoutRes protected val contentLayoutId: Int
 ): BottomSheetDialogFragment() {
 
   protected lateinit var binding: VDB
@@ -20,7 +20,7 @@ open class BaseBottomSheetDialogFragment<VDB: ViewDataBinding>(
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    binding = DataBindingUtil.inflate(inflater, contentLayouId, container, false)
+    binding = DataBindingUtil.inflate(inflater, contentLayoutId, container, false)
 
     return binding.root
   }

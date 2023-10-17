@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import com.dpfht.android.democityweather.framework.navigation.NavigationService
 import javax.inject.Inject
 
-open class BaseFragment<VDB: ViewDataBinding>(
-  @LayoutRes protected val contentLayouId: Int
+abstract class BaseFragment<VDB: ViewDataBinding>(
+  @LayoutRes protected val contentLayoutId: Int
 ): Fragment() {
 
   protected lateinit var binding: VDB
@@ -25,7 +25,7 @@ open class BaseFragment<VDB: ViewDataBinding>(
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    binding = DataBindingUtil.inflate(inflater, contentLayouId, container, false)
+    binding = DataBindingUtil.inflate(inflater, contentLayoutId, container, false)
 
     return binding.root
   }
