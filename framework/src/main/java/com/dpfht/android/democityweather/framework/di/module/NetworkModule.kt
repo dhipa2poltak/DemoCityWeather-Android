@@ -24,7 +24,7 @@ class NetworkModule {
 
   @Provides
   @Singleton
-  fun httpLoggingInterceptor(): HttpLoggingInterceptor {
+  fun provideLoggingInterceptor(): HttpLoggingInterceptor {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
     httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
     return httpLoggingInterceptor
@@ -32,7 +32,13 @@ class NetworkModule {
 
   @Provides
   @Singleton
-  fun provideClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+  fun provideAuthInterceptor(): AuthInterceptor {
+    return AuthInterceptor()
+  }
+
+  @Provides
+  @Singleton
+  fun provideClient(httpLoggingInterceptor: HttpLoggingInterceptor, authInterceptor: AuthInterceptor): OkHttpClient {
     val httpClientBuilder = OkHttpClient()
       .newBuilder()
 
@@ -40,7 +46,7 @@ class NetworkModule {
       httpClientBuilder.addInterceptor(httpLoggingInterceptor)
     }
 
-    httpClientBuilder.addInterceptor(AuthInterceptor())
+    httpClientBuilder.addInterceptor(authInterceptor)
 
     return httpClientBuilder.build()
   }

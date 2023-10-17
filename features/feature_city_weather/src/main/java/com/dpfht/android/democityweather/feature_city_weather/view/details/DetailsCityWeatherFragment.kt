@@ -53,7 +53,7 @@ class DetailsCityWeatherFragment : BaseFragment<FragmentDetailsCityWeatherBindin
 
     viewModel.modalMessage.observe(viewLifecycleOwner) { msg ->
       if (msg.isNotEmpty()) {
-        navigationService.navigatoErrorMessage(msg)
+        navigationService.navigateToErrorMessage(msg)
       }
     }
 

@@ -8,5 +8,5 @@ interface NavigationService {
   fun navigateToListOfCityWeather()
   fun navigateToAddCityWeather(onSelectCity: ((cityEntity: CityEntity) -> Unit)?)
   fun navigateToDetailsCityWeather(cityWeather: CityWeatherEntity)
-  fun navigatoErrorMessage(message: String)
+  fun navigateToErrorMessage(message: String)
 }

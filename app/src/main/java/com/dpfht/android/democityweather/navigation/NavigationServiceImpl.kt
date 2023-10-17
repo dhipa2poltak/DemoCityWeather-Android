@@ -38,7 +38,7 @@ class NavigationServiceImpl(
     navController.navigate(R.id.action_list_to_details_navigation, args)
   }
 
-  override fun navigatoErrorMessage(message: String) {
+  override fun navigateToErrorMessage(message: String) {
     val builder = Uri.Builder()
     builder.scheme("android-app")
       .authority("com.dpfht.android.democityweather")
