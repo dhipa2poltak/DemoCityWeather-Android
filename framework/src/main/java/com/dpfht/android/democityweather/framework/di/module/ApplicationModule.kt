@@ -1,9 +1,9 @@
 package com.dpfht.android.democityweather.framework.di.module
 
-import com.dpfht.android.democityweather.data.datasource.LocalDataSource
-import com.dpfht.android.democityweather.data.datasource.RemoteDataSource
-import com.dpfht.android.democityweather.data.repository.AppRepositoryImpl
-import com.dpfht.android.democityweather.domain.repository.AppRepository
+import com.dpfht.democityweather.data.datasource.LocalDataSource
+import com.dpfht.democityweather.data.datasource.RemoteDataSource
+import com.dpfht.democityweather.data.repository.AppRepositoryImpl
+import com.dpfht.democityweather.domain.repository.AppRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

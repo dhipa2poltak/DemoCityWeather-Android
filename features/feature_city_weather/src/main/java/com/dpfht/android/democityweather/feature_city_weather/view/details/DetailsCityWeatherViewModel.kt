@@ -4,15 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dpfht.android.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.android.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.android.democityweather.domain.entity.Result
-import com.dpfht.android.democityweather.domain.entity.vw_entity.ForecastHourlyVWEntity
-import com.dpfht.android.democityweather.domain.entity.vw_entity.ForecastVWEntity
-import com.dpfht.android.democityweather.domain.entity.vw_entity.ForecastWeeklyVWEntity
-import com.dpfht.android.democityweather.domain.usecase.GetCurrentWeatherUseCase
-import com.dpfht.android.democityweather.domain.usecase.GetForecastUseCase
-import com.dpfht.android.democityweather.domain.util.WeatherUtil
+import com.dpfht.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
+import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.entity.vw_entity.ForecastHourlyVWEntity
+import com.dpfht.democityweather.domain.entity.vw_entity.ForecastVWEntity
+import com.dpfht.democityweather.domain.entity.vw_entity.ForecastWeeklyVWEntity
+import com.dpfht.democityweather.domain.usecase.GetCurrentWeatherUseCase
+import com.dpfht.democityweather.domain.usecase.GetForecastUseCase
+import com.dpfht.democityweather.domain.util.WeatherUtil
 import com.dpfht.android.democityweather.feature_city_weather.util.ResourceUtil
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.HourlyAdapter
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.WeeklyAdapter
@@ -122,7 +122,7 @@ class DetailsCityWeatherViewModel @Inject constructor(
     }
 
     for (weekly in forecastVWEntity.weeklyEntities) {
-      weekly.animationId = ResourceUtil.getAnimationResourceForWeatherDescription(weekly.maxDesciption)
+      weekly.animationId = ResourceUtil.getAnimationResourceForWeatherDescription(weekly.maxDescription)
 
       this.weeklyVWEntities.add(weekly)
       this.weeklyAdapter.notifyItemInserted(weeklyVWEntities.size - 1)

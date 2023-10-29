@@ -3,7 +3,7 @@ package com.dpfht.android.democityweather.framework.data.datasource.local.room.m
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.dpfht.android.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 
 @Entity(tableName = "tbl_city_weather")
 data class CityWeatherDBModel(

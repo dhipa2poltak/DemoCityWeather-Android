@@ -3,11 +3,11 @@ package com.dpfht.android.democityweather.feature_city_weather.view.list.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dpfht.android.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.android.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.android.democityweather.domain.entity.Result
-import com.dpfht.android.democityweather.domain.usecase.GetCurrentWeatherUseCase
-import com.dpfht.android.democityweather.domain.util.WeatherUtil
+import com.dpfht.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
+import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.usecase.GetCurrentWeatherUseCase
+import com.dpfht.democityweather.domain.util.WeatherUtil
 import com.dpfht.android.democityweather.feature_city_weather.databinding.LayoutRowCityWeatherBinding
 import com.dpfht.android.democityweather.feature_city_weather.util.ResourceUtil
 import kotlinx.coroutines.CoroutineScope

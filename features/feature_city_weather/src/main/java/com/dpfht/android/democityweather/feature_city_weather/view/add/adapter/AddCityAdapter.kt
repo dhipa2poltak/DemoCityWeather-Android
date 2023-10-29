@@ -3,9 +3,9 @@ package com.dpfht.android.democityweather.feature_city_weather.view.add.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dpfht.android.democityweather.domain.entity.Result
-import com.dpfht.android.democityweather.domain.entity.CityEntity
-import com.dpfht.android.democityweather.domain.usecase.GetCountryUseCase
+import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.entity.CityEntity
+import com.dpfht.democityweather.domain.usecase.GetCountryUseCase
 import com.dpfht.android.democityweather.feature_city_weather.databinding.LayoutRowCityBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -43,7 +43,8 @@ class AddCityAdapter @Inject constructor(
           holder.binding.tvCountryName.text = result.value.countryName
         }
         is Result.ErrorResult -> {
-          holder.binding.tvCountryName.text = "unknown"
+          val str = "unknown"
+          holder.binding.tvCountryName.text = str
         }
       }
     }

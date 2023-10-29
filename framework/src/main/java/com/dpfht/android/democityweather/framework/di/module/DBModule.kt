@@ -1,7 +1,7 @@
 package com.dpfht.android.democityweather.framework.di.module
 
 import android.content.Context
-import com.dpfht.android.democityweather.data.datasource.LocalDataSource
+import com.dpfht.democityweather.data.datasource.LocalDataSource
 import com.dpfht.android.democityweather.framework.data.datasource.local.LocalDataSourceImpl
 import com.dpfht.android.democityweather.framework.data.datasource.local.room.db.AppDB
 import dagger.Module

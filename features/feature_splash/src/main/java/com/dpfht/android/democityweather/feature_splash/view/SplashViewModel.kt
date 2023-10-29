@@ -3,7 +3,7 @@ package com.dpfht.android.democityweather.feature_splash.view
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dpfht.android.democityweather.domain.usecase.GetStreamIsDBInitializedUseCase
+import com.dpfht.democityweather.domain.usecase.GetStreamIsDBInitializedUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable

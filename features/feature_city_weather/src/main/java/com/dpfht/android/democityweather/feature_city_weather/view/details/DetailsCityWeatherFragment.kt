@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dpfht.android.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.android.democityweather.feature_city_weather.R
 import com.dpfht.android.democityweather.feature_city_weather.databinding.FragmentDetailsCityWeatherBinding
 import com.dpfht.android.democityweather.framework.Constants

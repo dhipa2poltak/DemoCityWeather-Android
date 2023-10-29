@@ -1,7 +1,7 @@
 package com.dpfht.android.democityweather.framework.di.module
 
 import android.content.Context
-import com.dpfht.android.democityweather.data.datasource.RemoteDataSource
+import com.dpfht.democityweather.data.datasource.RemoteDataSource
 import com.dpfht.android.democityweather.framework.BuildConfig
 import com.dpfht.android.democityweather.framework.Constants
 import com.dpfht.android.democityweather.framework.data.datasource.remote.RemoteDataSourceImpl

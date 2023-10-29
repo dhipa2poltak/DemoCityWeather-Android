@@ -1,7 +1,7 @@
 package com.dpfht.android.democityweather.framework.navigation
 
-import com.dpfht.android.democityweather.domain.entity.CityEntity
-import com.dpfht.android.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.entity.CityEntity
+import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 
 interface NavigationService {
 

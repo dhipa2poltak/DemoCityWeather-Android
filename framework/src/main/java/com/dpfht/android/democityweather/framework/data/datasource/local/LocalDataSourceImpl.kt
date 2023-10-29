@@ -1,12 +1,12 @@
 package com.dpfht.android.democityweather.framework.data.datasource.local
 
 import android.content.Context
-import com.dpfht.android.democityweather.data.datasource.LocalDataSource
-import com.dpfht.android.democityweather.domain.entity.CityEntity
-import com.dpfht.android.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.android.democityweather.domain.entity.CountryEntity
-import com.dpfht.android.democityweather.domain.entity.Result
-import com.dpfht.android.democityweather.domain.entity.VoidResult
+import com.dpfht.democityweather.data.datasource.LocalDataSource
+import com.dpfht.democityweather.domain.entity.CityEntity
+import com.dpfht.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.entity.CountryEntity
+import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.entity.VoidResult
 import com.dpfht.android.democityweather.framework.R
 import com.dpfht.android.democityweather.framework.data.datasource.local.room.db.AppDB
 import com.dpfht.android.democityweather.framework.data.datasource.local.room.model.CityWeatherDBModel

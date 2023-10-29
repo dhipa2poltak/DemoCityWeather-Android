@@ -1,15 +1,15 @@
 package com.dpfht.android.democityweather.framework.data.datasource.remote
 
 import android.content.Context
-import com.dpfht.android.democityweather.data.datasource.RemoteDataSource
-import com.dpfht.android.democityweather.data.model.remote.response.toDomain
-import com.dpfht.android.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.android.democityweather.domain.entity.CountryEntity
-import com.dpfht.android.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.android.democityweather.domain.entity.ForecastDomain
-import com.dpfht.android.democityweather.domain.entity.Result
-import com.dpfht.android.democityweather.domain.entity.Result.ErrorResult
-import com.dpfht.android.democityweather.domain.entity.Result.Success
+import com.dpfht.democityweather.data.datasource.RemoteDataSource
+import com.dpfht.democityweather.data.model.remote.response.toDomain
+import com.dpfht.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.entity.CountryEntity
+import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
+import com.dpfht.democityweather.domain.entity.ForecastDomain
+import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.entity.Result.ErrorResult
+import com.dpfht.democityweather.domain.entity.Result.Success
 import com.dpfht.android.democityweather.framework.R
 import com.dpfht.android.democityweather.framework.data.datasource.remote.rest.RestService
 import kotlinx.coroutines.CoroutineDispatcher

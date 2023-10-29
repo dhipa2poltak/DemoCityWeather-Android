@@ -3,7 +3,7 @@ package com.dpfht.android.democityweather.feature_city_weather.view.details.adap
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dpfht.android.democityweather.domain.entity.vw_entity.ForecastHourlyVWEntity
+import com.dpfht.democityweather.domain.entity.vw_entity.ForecastHourlyVWEntity
 import com.dpfht.android.democityweather.feature_city_weather.databinding.LayoutCellHourlyBinding
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.HourlyAdapter.ViewHolder
 import javax.inject.Inject
