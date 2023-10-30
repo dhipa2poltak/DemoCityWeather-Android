@@ -7,4 +7,5 @@
   <string name="city_weather_text_min">min</string>
   <string name="city_weather_text_max">max</string>
   <string name="city_weather_text_quota_exceeded">Quota Exceeded</string>
+  <string name="city_weather_text_failed_to_get_data">failed to get data, please try again later</string>
 </resources>

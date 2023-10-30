@@ -1,8 +1,10 @@
 package com.dpfht.android.democityweather.feature_city_weather.view.add.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.dpfht.android.democityweather.feature_city_weather.R
 import com.dpfht.democityweather.domain.entity.Result
 import com.dpfht.democityweather.domain.entity.CityEntity
 import com.dpfht.democityweather.domain.usecase.GetCountryUseCase
@@ -41,10 +43,12 @@ class AddCityAdapter @Inject constructor(
       when (val result = getCountryUseCase(city.countryCode)) {
         is Result.Success -> {
           holder.binding.tvCountryName.text = result.value.countryName
+          holder.binding.tvCountryName.setTextColor(Color.BLACK)
         }
         is Result.ErrorResult -> {
-          val str = "unknown"
+          val str = holder.binding.root.context.getString(R.string.city_weather_text_failed_to_get_data)
           holder.binding.tvCountryName.text = str
+          holder.binding.tvCountryName.setTextColor(Color.RED)
         }
       }
     }
