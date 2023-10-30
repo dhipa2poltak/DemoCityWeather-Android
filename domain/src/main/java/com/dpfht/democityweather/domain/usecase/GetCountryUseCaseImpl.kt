@@ -9,6 +9,10 @@ class GetCountryUseCaseImpl(
 ): GetCountryUseCase {
 
   override suspend operator fun invoke(countryCode: String): Result<CountryEntity> {
-    return appRepository.getCountry(countryCode)
+    return try {
+      Result.Success(appRepository.getCountry(countryCode))
+    } catch (e: Exception) {
+      Result.ErrorResult(e.message ?: "")
+    }
   }
 }

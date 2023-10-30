@@ -18,18 +18,17 @@ class GetForecastUseCaseImpl(
   private val minHourlyData = 6
 
   override suspend operator fun invoke(cityWeather: CityWeatherEntity): Result<ForecastVWEntity> {
-    return when (val result = appRepository.getForecast(cityWeather)) {
-      is Result.Success -> {
-        return Result.Success(
-          ForecastVWEntity(
-            hourlyEntities = getHourlyData(result.value),
-            weeklyEntities = getWeeklyData(result.value)
-          )
+    return try {
+      val forecast = appRepository.getForecast(cityWeather)
+
+      Result.Success(
+        ForecastVWEntity(
+          hourlyEntities = getHourlyData(forecast),
+          weeklyEntities = getWeeklyData(forecast)
         )
-      }
-      is Result.ErrorResult -> {
-        result
-      }
+      )
+    } catch (e: Exception) {
+      Result.ErrorResult(e.message ?: "")
     }
   }
 

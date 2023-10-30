@@ -9,6 +9,12 @@ class DeleteCityWeatherUseCaseImpl(
 ): DeleteCityWeatherUseCase {
 
   override suspend operator fun invoke(cityWeatherEntity: CityWeatherEntity): VoidResult {
-    return appRepository.deleteCityWeather(cityWeatherEntity)
+    return try {
+      appRepository.deleteCityWeather(cityWeatherEntity)
+
+      VoidResult.Success
+    } catch (e: Exception) {
+      VoidResult.Error(e.message ?: "")
+    }
   }
 }

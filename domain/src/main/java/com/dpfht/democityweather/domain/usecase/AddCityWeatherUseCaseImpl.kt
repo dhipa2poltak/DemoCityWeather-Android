@@ -10,6 +10,10 @@ class AddCityWeatherUseCaseImpl(
 ): AddCityWeatherUseCase {
 
   override suspend operator fun invoke(cityEntity: CityEntity): Result<CityWeatherEntity> {
-    return appRepository.addCityWeather(cityEntity)
+    return try {
+      Result.Success(appRepository.addCityWeather(cityEntity))
+    } catch (e: Exception) {
+      Result.ErrorResult(e.message ?: "")
+    }
   }
 }

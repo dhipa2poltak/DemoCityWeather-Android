@@ -9,6 +9,10 @@ class GetAllCityUseCaseImpl(
 ): GetAllCityUseCase {
 
   override suspend operator fun invoke(): Result<List<CityEntity>> {
-    return appRepository.getAllCity()
+    return try {
+      Result.Success(appRepository.getAllCity())
+    } catch (e: Exception) {
+      Result.ErrorResult(e.message ?: "")
+    }
   }
 }

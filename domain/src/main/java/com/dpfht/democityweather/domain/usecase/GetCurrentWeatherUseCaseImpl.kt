@@ -10,6 +10,10 @@ class GetCurrentWeatherUseCaseImpl(
 ): GetCurrentWeatherUseCase {
 
   override suspend operator fun invoke(cityWeather: CityWeatherEntity): Result<CurrentWeatherDomain> {
-    return appRepository.getCurrentWeather(cityWeather)
+    return try {
+      Result.Success(appRepository.getCurrentWeather(cityWeather))
+    } catch (e: Exception) {
+      Result.ErrorResult(e.message ?: "")
+    }
   }
 }
