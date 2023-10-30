@@ -4,9 +4,6 @@
 | <img src="docs/screenshots/list_city_weather.jpg"> | <img src="docs/screenshots/add_city.jpg"> | <img src="docs/screenshots/forecast.jpg"> |
 | -------------------------------------------------- | ----------------------------------------- | ----------------------------------------- |
 
-**APK file:**
-**[Demo City Weather v1.4.apk](https://drive.google.com/file/d/1yYgr8-PwxWoiup5SnUJfZdsHoGU5nT3f/view?usp=sharing)**
-
 **Technology Stack:**
 - Kotlin Programming Language
 - Clean Architecture
