@@ -1,5 +1,6 @@
 package com.dpfht.democityweather.domain.usecase
 
+import com.dpfht.democityweather.domain.entity.AppException
 import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.democityweather.domain.entity.VoidResult
 import com.dpfht.democityweather.domain.repository.AppRepository
@@ -13,8 +14,8 @@ class DeleteCityWeatherUseCaseImpl(
       appRepository.deleteCityWeather(cityWeatherEntity)
 
       VoidResult.Success
-    } catch (e: Exception) {
-      VoidResult.Error(e.message ?: "")
+    } catch (e: AppException) {
+      VoidResult.Error(e.message)
     }
   }
 }

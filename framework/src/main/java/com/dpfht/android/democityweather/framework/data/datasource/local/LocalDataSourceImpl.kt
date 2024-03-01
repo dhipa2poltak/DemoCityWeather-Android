@@ -7,6 +7,7 @@ import com.dpfht.android.democityweather.framework.data.datasource.local.room.mo
 import com.dpfht.android.democityweather.framework.data.datasource.local.room.model.CountryDBModel
 import com.dpfht.android.democityweather.framework.data.datasource.local.room.model.toDomain
 import com.dpfht.democityweather.data.datasource.LocalDataSource
+import com.dpfht.democityweather.domain.entity.AppException
 import com.dpfht.democityweather.domain.entity.CityEntity
 import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.democityweather.domain.entity.CountryEntity
@@ -40,7 +41,7 @@ class LocalDataSourceImpl(
       list
     } catch (e: Exception) {
       e.printStackTrace()
-      throw Exception(context.getString(R.string.framework_failed_get_all_city))
+      throw AppException(context.getString(R.string.framework_failed_get_all_city))
     }
   }
 
@@ -54,7 +55,7 @@ class LocalDataSourceImpl(
     } catch (e: Exception) {
       e.printStackTrace()
 
-      throw Exception(context.getString(R.string.framework_failed_to_get_country) + " $countryCode")
+      throw AppException(context.getString(R.string.framework_failed_to_get_country) + " $countryCode")
     }
   }
 
@@ -67,7 +68,7 @@ class LocalDataSourceImpl(
     } catch (e: Exception) {
       e.printStackTrace()
 
-      throw Exception(context.getString(R.string.framework_cannot_save_country) + " ${countryEntity.countryCode}")
+      throw AppException(context.getString(R.string.framework_cannot_save_country) + " ${countryEntity.countryCode}")
     }
   }
 
@@ -81,7 +82,7 @@ class LocalDataSourceImpl(
     } catch (e: Exception) {
       e.printStackTrace()
 
-      throw Exception(context.getString(R.string.framework_failed_get_all_city_weather))
+      throw AppException(context.getString(R.string.framework_failed_get_all_city_weather))
     }
   }
 
@@ -102,7 +103,7 @@ class LocalDataSourceImpl(
     } catch (e: Exception) {
       e.printStackTrace()
 
-      throw Exception(context.getString(R.string.framework_failed_add_city_weather))
+      throw AppException(context.getString(R.string.framework_failed_add_city_weather))
     }
   }
 
@@ -114,7 +115,7 @@ class LocalDataSourceImpl(
     } catch (e: Exception) {
       e.printStackTrace()
 
-      throw Exception(context.getString(R.string.framework_failed_delete_city_weather))
+      throw AppException(context.getString(R.string.framework_failed_delete_city_weather))
     }
   }
 }

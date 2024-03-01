@@ -16,6 +16,7 @@ import com.dpfht.democityweather.domain.util.WeatherUtil
 import com.dpfht.android.democityweather.feature_city_weather.util.ResourceUtil
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.HourlyAdapter
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.WeeklyAdapter
+import com.dpfht.democityweather.domain.entity.Result.Error
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -71,7 +72,7 @@ class DetailsCityWeatherViewModel @Inject constructor(
         is Result.Success -> {
           onSuccessGetCurrentWeather(result.value)
         }
-        is Result.ErrorResult -> {
+        is Error -> {
           onErrorGetCurrentWeather(result.message)
         }
       }
@@ -103,7 +104,7 @@ class DetailsCityWeatherViewModel @Inject constructor(
         is Result.Success -> {
           onSuccessGetForecast(result.value)
         }
-        is Result.ErrorResult -> {
+        is Error -> {
           onErrorGetForecast(result.message)
         }
       }

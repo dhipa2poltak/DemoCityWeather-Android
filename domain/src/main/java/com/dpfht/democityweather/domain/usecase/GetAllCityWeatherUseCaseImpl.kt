@@ -1,5 +1,6 @@
 package com.dpfht.democityweather.domain.usecase
 
+import com.dpfht.democityweather.domain.entity.AppException
 import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.democityweather.domain.entity.Result
 import com.dpfht.democityweather.domain.repository.AppRepository
@@ -11,8 +12,8 @@ class GetAllCityWeatherUseCaseImpl(
   override suspend operator fun invoke(): Result<List<CityWeatherEntity>> {
     return try {
       Result.Success(appRepository.getAllCityWeather())
-    } catch (e: Exception) {
-      Result.ErrorResult(e.message ?: "")
+    } catch (e: AppException) {
+      Result.Error(e.message)
     }
   }
 }

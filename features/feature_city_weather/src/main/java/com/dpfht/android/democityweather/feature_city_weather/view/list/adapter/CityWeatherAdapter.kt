@@ -10,6 +10,7 @@ import com.dpfht.democityweather.domain.usecase.GetCurrentWeatherUseCase
 import com.dpfht.democityweather.domain.util.WeatherUtil
 import com.dpfht.android.democityweather.feature_city_weather.databinding.LayoutRowCityWeatherBinding
 import com.dpfht.android.democityweather.feature_city_weather.util.ResourceUtil
+import com.dpfht.democityweather.domain.entity.Result.Error
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -52,7 +53,7 @@ class CityWeatherAdapter @Inject constructor(
         is Result.Success -> {
           onSuccessGetCurrentWeather(binding, result.value)
         }
-        is Result.ErrorResult -> {
+        is Error -> {
           onErrorGetCurrentWeather(result.message)
         }
       }

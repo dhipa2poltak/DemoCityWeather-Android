@@ -5,6 +5,7 @@ import com.dpfht.android.democityweather.framework.R
 import com.dpfht.android.democityweather.framework.data.datasource.remote.rest.RestService
 import com.dpfht.democityweather.data.datasource.RemoteDataSource
 import com.dpfht.democityweather.data.model.remote.response.toDomain
+import com.dpfht.democityweather.domain.entity.AppException
 import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.democityweather.domain.entity.CountryEntity
 import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
@@ -42,7 +43,7 @@ class RemoteDataSourceImpl(
         apiCall.invoke()
       } catch (t: Throwable) {
         throw when (t) {
-          is IOException -> Exception(context.getString(R.string.framework_text_error_connection))
+          is IOException -> AppException(context.getString(R.string.framework_text_error_connection))
           is HttpException -> {
             //val code = t.code()
             /*
@@ -50,10 +51,10 @@ class RemoteDataSourceImpl(
 
             ErrorResult(errorResponse?.results?.get(0)?.error ?: "http error")
             */
-            Exception(context.getString(R.string.framework_text_http_error))
+            AppException(context.getString(R.string.framework_text_http_error))
           }
           else -> {
-            Exception(context.getString(R.string.framework_text_error_conversion))
+            AppException(context.getString(R.string.framework_text_error_conversion))
           }
         }
       }

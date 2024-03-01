@@ -1,5 +1,6 @@
 package com.dpfht.democityweather.domain.usecase
 
+import com.dpfht.democityweather.domain.entity.AppException
 import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.democityweather.domain.entity.ForecastDomain
 import com.dpfht.democityweather.domain.entity.Result
@@ -27,8 +28,10 @@ class GetForecastUseCaseImpl(
           weeklyEntities = getWeeklyData(forecast)
         )
       )
+    } catch (e: AppException) {
+      Result.Error(e.message)
     } catch (e: Exception) {
-      Result.ErrorResult(e.message ?: "")
+      Result.Error(e.message ?: "")
     }
   }
 

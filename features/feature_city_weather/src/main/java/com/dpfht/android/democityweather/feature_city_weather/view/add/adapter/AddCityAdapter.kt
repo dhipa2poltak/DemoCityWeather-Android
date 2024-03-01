@@ -9,6 +9,7 @@ import com.dpfht.democityweather.domain.entity.Result
 import com.dpfht.democityweather.domain.entity.CityEntity
 import com.dpfht.democityweather.domain.usecase.GetCountryUseCase
 import com.dpfht.android.democityweather.feature_city_weather.databinding.LayoutRowCityBinding
+import com.dpfht.democityweather.domain.entity.Result.Error
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -45,7 +46,7 @@ class AddCityAdapter @Inject constructor(
           holder.binding.tvCountryName.text = result.value.countryName
           holder.binding.tvCountryName.setTextColor(Color.BLACK)
         }
-        is Result.ErrorResult -> {
+        is Error -> {
           val str = holder.binding.root.context.getString(R.string.city_weather_text_failed_to_get_data)
           holder.binding.tvCountryName.text = str
           holder.binding.tvCountryName.setTextColor(Color.RED)

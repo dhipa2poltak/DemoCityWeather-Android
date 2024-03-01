@@ -8,6 +8,7 @@ import com.dpfht.democityweather.domain.entity.CityEntity
 import com.dpfht.democityweather.domain.entity.Result
 import com.dpfht.democityweather.domain.usecase.GetAllCityUseCase
 import com.dpfht.android.democityweather.feature_city_weather.view.add.adapter.AddCityAdapter
+import com.dpfht.democityweather.domain.entity.Result.Error
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -41,7 +42,7 @@ class AddCityWeatherViewModel @Inject constructor(
         is Result.Success -> {
           onSuccessGetAllCity(result.value)
         }
-        is Result.ErrorResult -> {
+        is Error -> {
           onErrorGetAllCity(result.message)
         }
       }
