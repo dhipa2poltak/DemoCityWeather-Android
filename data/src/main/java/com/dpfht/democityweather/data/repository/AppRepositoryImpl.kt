@@ -7,6 +7,7 @@ import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.democityweather.domain.entity.CountryEntity
 import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
 import com.dpfht.democityweather.domain.entity.ForecastDomain
+import com.dpfht.democityweather.domain.entity.LocalMessage
 import com.dpfht.democityweather.domain.repository.AppRepository
 import io.reactivex.rxjava3.core.Observable
 
@@ -67,5 +68,9 @@ class AppRepositoryImpl(
 
   override suspend fun getForecast(cityWeather: CityWeatherEntity): ForecastDomain {
     return remoteDataSource.getForecast(cityWeather)
+  }
+
+  override fun getLocalMessage(localMessage: LocalMessage): String {
+    return localDataSource.getLocalMessage(localMessage)
   }
 }

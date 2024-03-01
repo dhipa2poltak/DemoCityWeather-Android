@@ -5,6 +5,7 @@ import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.democityweather.domain.entity.CountryEntity
 import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
 import com.dpfht.democityweather.domain.entity.ForecastDomain
+import com.dpfht.democityweather.domain.entity.LocalMessage
 import io.reactivex.rxjava3.core.Observable
 
 interface AppRepository {
@@ -18,4 +19,5 @@ interface AppRepository {
   suspend fun deleteCityWeather(cityWeatherEntity: CityWeatherEntity)
   suspend fun getCurrentWeather(cityWeather: CityWeatherEntity): CurrentWeatherDomain
   suspend fun getForecast(cityWeather: CityWeatherEntity): ForecastDomain
+  fun getLocalMessage(localMessage: LocalMessage): String
 }

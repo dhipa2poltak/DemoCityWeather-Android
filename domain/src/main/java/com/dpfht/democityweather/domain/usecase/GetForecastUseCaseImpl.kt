@@ -3,6 +3,7 @@ package com.dpfht.democityweather.domain.usecase
 import com.dpfht.democityweather.domain.entity.AppException
 import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.democityweather.domain.entity.ForecastDomain
+import com.dpfht.democityweather.domain.entity.LocalMessage
 import com.dpfht.democityweather.domain.entity.Result
 import com.dpfht.democityweather.domain.entity.vw_entity.ForecastHourlyVWEntity
 import com.dpfht.democityweather.domain.entity.vw_entity.ForecastVWEntity
@@ -31,7 +32,9 @@ class GetForecastUseCaseImpl(
     } catch (e: AppException) {
       Result.Error(e.message)
     } catch (e: Exception) {
-      Result.Error(e.message ?: "")
+      val msg = appRepository.getLocalMessage(LocalMessage.ErrorWhenGettingForecastData)
+
+      Result.Error(msg)
     }
   }
 

@@ -10,4 +10,7 @@
   <string name="framework_text_error_connection">error in connection</string>
   <string name="framework_text_http_error">http error</string>
   <string name="framework_text_error_conversion">error in conversion</string>
+
+  <string name="error_when_getting_forecast_data">error when getting forecast data</string>
+  <string name="error_general">unknown error</string>
 </resources>

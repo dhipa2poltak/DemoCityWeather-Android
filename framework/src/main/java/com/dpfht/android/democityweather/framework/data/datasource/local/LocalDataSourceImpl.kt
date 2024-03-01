@@ -11,6 +11,9 @@ import com.dpfht.democityweather.domain.entity.AppException
 import com.dpfht.democityweather.domain.entity.CityEntity
 import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.democityweather.domain.entity.CountryEntity
+import com.dpfht.democityweather.domain.entity.LocalMessage
+import com.dpfht.democityweather.domain.entity.LocalMessage.ErrorWhenGettingForecastData
+import com.dpfht.democityweather.domain.entity.LocalMessage.GeneralError
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -116,6 +119,13 @@ class LocalDataSourceImpl(
       e.printStackTrace()
 
       throw AppException(context.getString(R.string.framework_failed_delete_city_weather))
+    }
+  }
+
+  override fun getLocalMessage(localMessage: LocalMessage): String {
+    return when (localMessage) {
+      ErrorWhenGettingForecastData -> context.getString(R.string.error_when_getting_forecast_data)
+      GeneralError -> context.getString(R.string.error_general)
     }
   }
 }
