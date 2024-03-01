@@ -95,12 +95,8 @@ android {
 
 dependencies {
 
-  implementation(project(":domain"))
-  implementation(project(":data"))
   implementation(project(":framework"))
-  implementation(project(":features:feature_splash"))
-  implementation(project(":features:feature_error_message"))
-  implementation(project(":features:feature_city_weather"))
+  implementation(project(":navigation"))
 
   implementation(Deps.coreKtx)
   implementation(Deps.appCompat)

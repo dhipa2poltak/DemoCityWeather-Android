@@ -10,6 +10,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.dpfht.android.democityweather.databinding.ActivityMainBinding
+import com.dpfht.android.democityweather.framework.R as frameworkR
+import com.dpfht.android.democityweather.navigation.R as navigationR
 import com.dpfht.android.democityweather.view.about.AboutDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,16 +27,16 @@ class MainActivity : AppCompatActivity() {
     setContentView(binding.root)
 
     val appBarConfiguration = AppBarConfiguration(
-      setOf(R.id.listCityWeatherFragment)
+      setOf(navigationR.id.listCityWeatherFragment)
     )
 
-    val navHostFragment = supportFragmentManager.findFragmentById(R.id.demo_nav_host_fragment) as NavHostFragment
+    val navHostFragment = supportFragmentManager.findFragmentById(frameworkR.id.nav_host_fragment) as NavHostFragment
     navController = navHostFragment.navController
 
     navController.addOnDestinationChangedListener { _, destination, _ ->
       title = when (destination.id) {
-        R.id.listCityWeatherFragment -> "${getString(R.string.app_name)}${getString(R.string.running_mode)}"
-        R.id.detailsCityWeatherFragment -> getString(com.dpfht.android.democityweather.framework.R.string.framework_text_weather)
+        navigationR.id.listCityWeatherFragment -> "${getString(R.string.app_name)}${getString(R.string.running_mode)}"
+        navigationR.id.detailsCityWeatherFragment -> getString(com.dpfht.android.democityweather.framework.R.string.framework_text_weather)
         else -> "${getString(R.string.app_name)}${getString(R.string.running_mode)}"
       }
     }

@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
-import com.dpfht.android.democityweather.R
 import com.dpfht.democityweather.domain.entity.CityEntity
 import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.android.democityweather.feature_city_weather.view.add.AddCityWeatherFragment
