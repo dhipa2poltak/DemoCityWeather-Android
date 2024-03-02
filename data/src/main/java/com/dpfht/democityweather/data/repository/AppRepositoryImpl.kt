@@ -2,12 +2,14 @@ package com.dpfht.democityweather.data.repository
 
 import com.dpfht.democityweather.data.datasource.LocalDataSource
 import com.dpfht.democityweather.data.datasource.RemoteDataSource
+import com.dpfht.democityweather.domain.entity.AppException
 import com.dpfht.democityweather.domain.entity.CityEntity
 import com.dpfht.democityweather.domain.entity.CityWeatherEntity
 import com.dpfht.democityweather.domain.entity.CountryEntity
 import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
 import com.dpfht.democityweather.domain.entity.ForecastDomain
 import com.dpfht.democityweather.domain.entity.LocalMessage
+import com.dpfht.democityweather.domain.entity.LocalMessage.NoCountryFound
 import com.dpfht.democityweather.domain.repository.AppRepository
 import io.reactivex.rxjava3.core.Observable
 
@@ -39,7 +41,7 @@ class AppRepositoryImpl(
       return countryEntity
     }
 
-    throw Exception("no country found")
+    throw AppException(getLocalMessage(NoCountryFound))
   }
 
   override suspend fun saveCountry(countryEntity: CountryEntity) {

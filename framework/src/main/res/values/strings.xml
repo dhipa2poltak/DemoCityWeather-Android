@@ -13,4 +13,5 @@
 
   <string name="error_when_getting_forecast_data">error when getting forecast data</string>
   <string name="error_general">unknown error</string>
+  <string name="no_country_found">no country found</string>
 </resources>

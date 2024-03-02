@@ -14,6 +14,7 @@ import com.dpfht.democityweather.domain.entity.CountryEntity
 import com.dpfht.democityweather.domain.entity.LocalMessage
 import com.dpfht.democityweather.domain.entity.LocalMessage.ErrorWhenGettingForecastData
 import com.dpfht.democityweather.domain.entity.LocalMessage.GeneralError
+import com.dpfht.democityweather.domain.entity.LocalMessage.NoCountryFound
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -126,6 +127,7 @@ class LocalDataSourceImpl(
     return when (localMessage) {
       ErrorWhenGettingForecastData -> context.getString(R.string.error_when_getting_forecast_data)
       GeneralError -> context.getString(R.string.error_general)
+      NoCountryFound -> context.getString(R.string.no_country_found)
     }
   }
 }
