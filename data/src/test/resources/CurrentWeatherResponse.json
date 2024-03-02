@@ -1,0 +1,49 @@
+{
+  "coord": {
+    "lon": 106.8456,
+    "lat": -6.2088
+  },
+  "weather": [
+    {
+      "id": 701,
+      "main": "Mist",
+      "description": "mist",
+      "icon": "50d"
+    },
+    {
+      "id": 211,
+      "main": "Thunderstorm",
+      "description": "thunderstorm",
+      "icon": "11d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 31.63,
+    "feels_like": 38.63,
+    "temp_min": 28.86,
+    "temp_max": 34.2,
+    "pressure": 1009,
+    "humidity": 83
+  },
+  "visibility": 5000,
+  "wind": {
+    "speed": 3.09,
+    "deg": 270
+  },
+  "clouds": {
+    "all": 40
+  },
+  "dt": 1709351858,
+  "sys": {
+    "type": 1,
+    "id": 9383,
+    "country": "ID",
+    "sunrise": 1709333906,
+    "sunset": 1709377885
+  },
+  "timezone": 25200,
+  "id": 1642911,
+  "name": "Jakarta",
+  "cod": 200
+}
