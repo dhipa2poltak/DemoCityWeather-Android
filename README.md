@@ -19,6 +19,8 @@
 - RxKotlin
 - GSON Serialization
 - Lottie
+- Unit Test: JUnit, Mockito, MockWebServer, Robolectric
+- Code Coverage: JaCoCo
 - Gradle build flavors
 - BuildSrc + Kotlin DSL
 - Proguard
