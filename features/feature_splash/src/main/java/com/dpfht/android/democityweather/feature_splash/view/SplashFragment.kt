@@ -1,14 +1,11 @@
 package com.dpfht.android.democityweather.feature_splash.view
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import com.dpfht.android.democityweather.feature_splash.R
 import com.dpfht.android.democityweather.feature_splash.databinding.FragmentSplashBinding
-import com.dpfht.android.democityweather.framework.Constants
 import com.dpfht.android.democityweather.framework.commons.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,26 +19,15 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(R.layout.fragment_spl
 
     observeViewModel()
     viewModel.start()
-
-    Handler(Looper.getMainLooper()).postDelayed({
-      viewModel.onDelayDone()
-      navigateToListOfCityWeather()
-    }, Constants.DELAY_SPLASH)
   }
 
   private fun observeViewModel() {
-    viewModel.isInitDBDoneData.observe(viewLifecycleOwner) { isDone ->
+    viewModel.isInitializationDone.observe(viewLifecycleOwner) { isDone ->
       if (isDone) {
-        navigateToListOfCityWeather()
+        navigationService.navigateToListOfCityWeather()
+      } else if (viewModel.isDelayDone) {
+        binding.tvLoading.text = requireContext().resources.getString(R.string.splash_init_db)
       }
-    }
-  }
-
-  private fun navigateToListOfCityWeather() {
-    if (viewModel.isDelayDone && viewModel.isInitDBDone) {
-      navigationService.navigateToListOfCityWeather()
-    } else if (viewModel.isDelayDone) {
-      binding.tvLoading.text = requireContext().resources.getString(R.string.splash_init_db)
     }
   }
 

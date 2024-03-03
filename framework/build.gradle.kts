@@ -83,6 +83,9 @@ dependencies {
   implementation(Deps.room)
 
   implementation(Deps.rxKotlin)
+  implementation(Deps.rxAndroid)
+
+  implementation(Deps.jUnit)
 
   implementation(Deps.annotation)
 }
