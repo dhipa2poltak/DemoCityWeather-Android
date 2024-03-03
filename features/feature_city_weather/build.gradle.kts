@@ -48,6 +48,7 @@ dependencies {
   testImplementation(Deps.mockitoInline)
   testImplementation(Deps.coroutinesTest)
   testImplementation(Deps.coreTesting)
+  testImplementation(Deps.robolectric)
   androidTestImplementation(Deps.jUnitExt)
   androidTestImplementation(Deps.espresso)
 

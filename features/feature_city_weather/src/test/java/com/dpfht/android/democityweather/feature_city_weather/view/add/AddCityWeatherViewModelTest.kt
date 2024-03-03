@@ -46,12 +46,13 @@ class AddCityWeatherViewModelTest {
   @Mock
   private lateinit var isLoadingObserver: Observer<Boolean>
 
-  private val cities = ArrayList<CityEntity>()
+  private lateinit var cities: ArrayList<CityEntity>
 
   @Before
   fun setup() {
     Dispatchers.setMain(testDispatcher)
 
+    cities = arrayListOf()
     viewModel = AddCityWeatherViewModel(getAllCityUseCase, cities, addCityAdapter)
   }
 
