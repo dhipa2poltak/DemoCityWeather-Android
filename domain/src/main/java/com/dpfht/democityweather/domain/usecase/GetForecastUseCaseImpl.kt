@@ -1,13 +1,13 @@
 package com.dpfht.democityweather.domain.usecase
 
-import com.dpfht.democityweather.domain.entity.AppException
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.ForecastDomain
-import com.dpfht.democityweather.domain.entity.LocalMessage
-import com.dpfht.democityweather.domain.entity.Result
-import com.dpfht.democityweather.domain.entity.vw_entity.ForecastHourlyVWEntity
-import com.dpfht.democityweather.domain.entity.vw_entity.ForecastVWEntity
-import com.dpfht.democityweather.domain.entity.vw_entity.ForecastWeeklyVWEntity
+import com.dpfht.democityweather.domain.model.AppException
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.ForecastModel
+import com.dpfht.democityweather.domain.model.LocalMessage
+import com.dpfht.democityweather.domain.model.Result
+import com.dpfht.democityweather.domain.model.vw_model.ForecastHourlyVWModel
+import com.dpfht.democityweather.domain.model.vw_model.ForecastVWModel
+import com.dpfht.democityweather.domain.model.vw_model.ForecastWeeklyVWModel
 import com.dpfht.democityweather.domain.repository.AppRepository
 import com.dpfht.democityweather.domain.util.WeatherUtil
 import java.text.SimpleDateFormat
@@ -19,12 +19,12 @@ class GetForecastUseCaseImpl(
 
   private val minHourlyData = 6
 
-  override suspend operator fun invoke(cityWeather: CityWeatherEntity): Result<ForecastVWEntity> {
+  override suspend operator fun invoke(cityWeather: CityWeather): Result<ForecastVWModel> {
     return try {
       val forecast = appRepository.getForecast(cityWeather)
 
       Result.Success(
-        ForecastVWEntity(
+        ForecastVWModel(
           hourlyEntities = getHourlyData(forecast),
           weeklyEntities = getWeeklyData(forecast)
         )
@@ -38,8 +38,8 @@ class GetForecastUseCaseImpl(
     }
   }
 
-  private fun getHourlyData(forecastDomain: ForecastDomain): List<ForecastHourlyVWEntity> {
-    val list = arrayListOf<ForecastHourlyVWEntity>()
+  private fun getHourlyData(forecastDomain: ForecastModel): List<ForecastHourlyVWModel> {
+    val list = arrayListOf<ForecastHourlyVWModel>()
 
     val now = Calendar.getInstance().time
     val formatDay = SimpleDateFormat("yyyy-MM-dd")
@@ -65,7 +65,7 @@ class GetForecastUseCaseImpl(
           description = forecast.weathers[0].description
         }
 
-        val hourlyVWModel = ForecastHourlyVWEntity(strTime = sTimeForecast, description = description, strTemperature = sTemperature)
+        val hourlyVWModel = ForecastHourlyVWModel(strTime = sTimeForecast, description = description, strTemperature = sTemperature)
         list.add(hourlyVWModel)
       }
     }
@@ -73,7 +73,7 @@ class GetForecastUseCaseImpl(
     return list
   }
 
-  private fun getWeeklyData(forecastDomain: ForecastDomain): List<ForecastWeeklyVWEntity> {
+  private fun getWeeklyData(forecastDomain: ForecastModel): List<ForecastWeeklyVWModel> {
     val now = Calendar.getInstance().time
     val formatDay = SimpleDateFormat("yyyy-MM-dd")
     val sNow = formatDay.format(now)
@@ -87,7 +87,7 @@ class GetForecastUseCaseImpl(
       sDayForecast != sNow
     }
 
-    val list = arrayListOf<ForecastWeeklyVWEntity>()
+    val list = arrayListOf<ForecastWeeklyVWModel>()
     val formatDayName = SimpleDateFormat("EEEE")
     for (forecast in newForecast) {
       val sTimeForecast = WeatherUtil.convertUTCTimeToLocalTime(forecast.dtTxt)
@@ -110,7 +110,7 @@ class GetForecastUseCaseImpl(
             model.maxTemperature = tempMax
           }
         } else {
-          val newModel = ForecastWeeklyVWEntity(day = sDayNameForecast, minTemperature = tempMin, maxTemperature = tempMax)
+          val newModel = ForecastWeeklyVWModel(day = sDayNameForecast, minTemperature = tempMin, maxTemperature = tempMax)
           list.add(newModel)
         }
       }
@@ -136,7 +136,7 @@ class GetForecastUseCaseImpl(
     return list
   }
 
-  private fun getWeeklyModelByDayName(list: List<ForecastWeeklyVWEntity>, dayName: String): ForecastWeeklyVWEntity? {
+  private fun getWeeklyModelByDayName(list: List<ForecastWeeklyVWModel>, dayName: String): ForecastWeeklyVWModel? {
     if (list.isEmpty()) return null
 
     for (model in list) {

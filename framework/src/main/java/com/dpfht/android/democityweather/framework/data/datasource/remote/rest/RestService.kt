@@ -1,6 +1,6 @@
 package com.dpfht.android.democityweather.framework.data.datasource.remote.rest
 
-import com.dpfht.democityweather.data.model.remote.response.CountryInfo
+import com.dpfht.democityweather.data.model.remote.response.CountryInfoResponse
 import com.dpfht.democityweather.data.model.remote.response.CurrentWeatherResponse
 import com.dpfht.democityweather.data.model.remote.response.ForecastResponse
 import retrofit2.http.GET
@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface RestService {
 
   @GET("https://restcountries.com/v3.1/alpha/{country_code}")
-  suspend fun getCountry(@Path("country_code") countryCode: String): List<CountryInfo>
+  suspend fun getCountry(@Path("country_code") countryCode: String): List<CountryInfoResponse>
 
   @GET("weather")
   suspend fun getCurrentWeather(

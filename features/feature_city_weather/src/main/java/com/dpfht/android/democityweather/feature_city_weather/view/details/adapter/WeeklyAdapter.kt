@@ -3,7 +3,7 @@ package com.dpfht.android.democityweather.feature_city_weather.view.details.adap
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dpfht.democityweather.domain.entity.vw_entity.ForecastWeeklyVWEntity
+import com.dpfht.democityweather.domain.model.vw_model.ForecastWeeklyVWModel
 import com.dpfht.democityweather.domain.util.WeatherUtil
 import com.dpfht.android.democityweather.feature_city_weather.databinding.LayoutRowWeeklyBinding
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.WeeklyAdapter.ViewHolder
@@ -13,7 +13,7 @@ class WeeklyAdapter @Inject constructor(
 
 ): RecyclerView.Adapter<ViewHolder>() {
 
-  lateinit var weeklyVWEntities: List<ForecastWeeklyVWEntity>
+  lateinit var weeklyVWEntities: List<ForecastWeeklyVWModel>
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val binding = LayoutRowWeeklyBinding.inflate(LayoutInflater.from(parent.context), parent, false)

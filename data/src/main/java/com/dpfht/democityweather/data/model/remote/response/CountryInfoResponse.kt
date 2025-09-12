@@ -5,8 +5,8 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Keep
-data class CountryInfo(
+data class CountryInfoResponse(
   @SerializedName("name")
   @Expose
-  val name: CountryName? = null
+  val name: CountryNameDto? = null
 )

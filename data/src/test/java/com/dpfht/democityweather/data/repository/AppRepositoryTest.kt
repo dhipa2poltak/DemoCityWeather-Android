@@ -2,15 +2,15 @@ package com.dpfht.democityweather.data.repository
 
 import com.dpfht.democityweather.data.datasource.LocalDataSource
 import com.dpfht.democityweather.data.datasource.RemoteDataSource
-import com.dpfht.democityweather.domain.entity.AppException
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CountryEntity
-import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.democityweather.domain.entity.ForecastDomain
-import com.dpfht.democityweather.domain.entity.LocalMessage
-import com.dpfht.democityweather.domain.entity.MainEntity
-import com.dpfht.democityweather.domain.entity.WindEntity
+import com.dpfht.democityweather.domain.model.AppException
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.Country
+import com.dpfht.democityweather.domain.model.CurrentWeatherModel
+import com.dpfht.democityweather.domain.model.ForecastModel
+import com.dpfht.democityweather.domain.model.LocalMessage
+import com.dpfht.democityweather.domain.model.Main
+import com.dpfht.democityweather.domain.model.Wind
 import com.dpfht.democityweather.domain.repository.AppRepository
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -39,13 +39,13 @@ class AppRepositoryTest {
 
   private val countryCode = "ID"
   private val countryName = "Indonesia"
-  private val countryEntity = CountryEntity(countryCode, countryName)
+  private val countryEntity = Country(countryCode, countryName)
 
-  private val cityWeatherEntity1 = CityWeatherEntity(1, 101, "ID", "Jakarta", 1.0, 1.0)
-  private val cityWeatherEntity2 = CityWeatherEntity(2, 102, "ID", "Bogor", 2.0, 2.0)
+  private val cityWeatherEntity1 = CityWeather(1, 101, "ID", "Jakarta", 1.0, 1.0)
+  private val cityWeatherEntity2 = CityWeather(2, 102, "ID", "Bogor", 2.0, 2.0)
   private val list = listOf(cityWeatherEntity1, cityWeatherEntity2)
 
-  private val cityEntity = CityEntity(101, "ID", "Jakarta", 1.0, 1.0)
+  private val cityEntity = City(101, "ID", "Jakarta", 1.0, 1.0)
 
   private val msg = "this is an error message"
 
@@ -56,8 +56,8 @@ class AppRepositoryTest {
 
   @Test
   fun `get all city successfully`() = runTest {
-    val cityEntity1 = CityEntity(101, "ID", "Jakarta", 1.0, 1.0)
-    val cityEntity2 = CityEntity(102, "ID", "Bogor", 2.0, 2.0)
+    val cityEntity1 = City(101, "ID", "Jakarta", 1.0, 1.0)
+    val cityEntity2 = City(102, "ID", "Bogor", 2.0, 2.0)
     val list = listOf(cityEntity1, cityEntity2)
 
     whenever(localDataSource.getAllCity()).thenReturn(list)
@@ -251,7 +251,7 @@ class AppRepositoryTest {
 
   @Test
   fun `get current weather successfully`() = runTest {
-    val weather = CurrentWeatherDomain(listOf(), MainEntity(), WindEntity(), "name")
+    val weather = CurrentWeatherModel(listOf(), Main(), Wind(), "name")
     whenever(remoteDataSource.getCurrentWeather(cityWeatherEntity1)).thenReturn(weather)
 
     val actual = appRepository.getCurrentWeather(cityWeatherEntity1)
@@ -278,7 +278,7 @@ class AppRepositoryTest {
 
   @Test
   fun `get forecast successfully`() = runTest {
-    val forecast = ForecastDomain(listOf())
+    val forecast = ForecastModel(listOf())
     whenever(remoteDataSource.getForecast(cityWeatherEntity1)).thenReturn(forecast)
 
     val actual = appRepository.getForecast(cityWeatherEntity1)

@@ -5,7 +5,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Keep
-data class CountryName(
+data class CountryNameDto(
   @SerializedName("common")
   @Expose
   val common: String? = "",

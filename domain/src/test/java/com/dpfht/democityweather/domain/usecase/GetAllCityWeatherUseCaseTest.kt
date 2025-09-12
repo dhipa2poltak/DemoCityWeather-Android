@@ -1,8 +1,8 @@
 package com.dpfht.democityweather.domain.usecase
 
-import com.dpfht.democityweather.domain.entity.AppException
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.model.AppException
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertTrue
@@ -18,8 +18,8 @@ class GetAllCityWeatherUseCaseTest: BaseUseCaseTest() {
 
   private lateinit var getAllCityWeatherUseCase: GetAllCityWeatherUseCase
 
-  private val cityWeatherEntity1 = CityWeatherEntity(1, 101, "ID", "Jakarta", 1.0, 1.0)
-  private val cityWeatherEntity2 = CityWeatherEntity(2, 102, "ID", "Bogor", 2.0, 2.0)
+  private val cityWeatherEntity1 = CityWeather(1, 101, "ID", "Jakarta", 1.0, 1.0)
+  private val cityWeatherEntity2 = CityWeather(2, 102, "ID", "Bogor", 2.0, 2.0)
   private val list = listOf(cityWeatherEntity1, cityWeatherEntity2)
 
   @Before

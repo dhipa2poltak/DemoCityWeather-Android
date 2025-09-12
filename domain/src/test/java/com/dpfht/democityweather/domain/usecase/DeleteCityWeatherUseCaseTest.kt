@@ -1,8 +1,8 @@
 package com.dpfht.democityweather.domain.usecase
 
-import com.dpfht.democityweather.domain.entity.AppException
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.VoidResult
+import com.dpfht.democityweather.domain.model.AppException
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.VoidResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertTrue
@@ -18,7 +18,7 @@ class DeleteCityWeatherUseCaseTest: BaseUseCaseTest() {
 
   private lateinit var deleteCityWeatherUseCase: DeleteCityWeatherUseCase
 
-  private val cityWeatherEntity = CityWeatherEntity(1, 101, "ID", "Jakarta", 1.0, 1.0)
+  private val cityWeatherEntity = CityWeather(1, 101, "ID", "Jakarta", 1.0, 1.0)
 
   @Before
   fun setup() {

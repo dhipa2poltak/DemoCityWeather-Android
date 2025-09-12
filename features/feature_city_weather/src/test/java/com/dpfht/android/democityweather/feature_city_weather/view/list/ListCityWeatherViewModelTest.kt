@@ -3,10 +3,10 @@ package com.dpfht.android.democityweather.feature_city_weather.view.list
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.dpfht.android.democityweather.feature_city_weather.view.list.adapter.CityWeatherAdapter
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.Result
-import com.dpfht.democityweather.domain.entity.VoidResult
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.Result
+import com.dpfht.democityweather.domain.model.VoidResult
 import com.dpfht.democityweather.domain.usecase.AddCityWeatherUseCase
 import com.dpfht.democityweather.domain.usecase.DeleteCityWeatherUseCase
 import com.dpfht.democityweather.domain.usecase.GetAllCityWeatherUseCase
@@ -48,17 +48,17 @@ class ListCityWeatherViewModelTest {
   private lateinit var errorMessageObserver: Observer<String>
   private lateinit var isNoDataObserver: Observer<Boolean>
   private lateinit var isLoadingObserver: Observer<Boolean>
-  private lateinit var navigateObserver: Observer<CityWeatherEntity?>
+  private lateinit var navigateObserver: Observer<CityWeather?>
 
   private lateinit var cityWeatherAdapter: CityWeatherAdapter
 
-  private lateinit var cityWeathers: ArrayList<CityWeatherEntity>
+  private lateinit var cityWeathers: ArrayList<CityWeather>
 
-  private val cityWeatherEntity1 = CityWeatherEntity(1, 101, "ID", "Jakarta", 1.0, 1.0)
-  private val cityWeatherEntity2 = CityWeatherEntity(2, 102, "ID", "Bogor", 2.0, 2.0)
+  private val cityWeatherEntity1 = CityWeather(1, 101, "ID", "Jakarta", 1.0, 1.0)
+  private val cityWeatherEntity2 = CityWeather(2, 102, "ID", "Bogor", 2.0, 2.0)
   private val list = listOf(cityWeatherEntity1, cityWeatherEntity2)
 
-  private val cityEntity = CityEntity(101, "ID", "Jakarta", 1.0, 1.0)
+  private val cityEntity = City(101, "ID", "Jakarta", 1.0, 1.0)
 
   private val msg = "this is an error message"
 

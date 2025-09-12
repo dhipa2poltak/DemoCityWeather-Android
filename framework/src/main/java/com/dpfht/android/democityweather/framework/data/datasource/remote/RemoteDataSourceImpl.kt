@@ -5,11 +5,11 @@ import com.dpfht.android.democityweather.framework.R
 import com.dpfht.android.democityweather.framework.data.datasource.remote.rest.RestService
 import com.dpfht.democityweather.data.datasource.RemoteDataSource
 import com.dpfht.democityweather.data.model.remote.response.toDomain
-import com.dpfht.democityweather.domain.entity.AppException
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CountryEntity
-import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.democityweather.domain.entity.ForecastDomain
+import com.dpfht.democityweather.domain.model.AppException
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.Country
+import com.dpfht.democityweather.domain.model.CurrentWeatherModel
+import com.dpfht.democityweather.domain.model.ForecastModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -21,17 +21,17 @@ class RemoteDataSourceImpl(
   private val restService: RestService
 ): RemoteDataSource {
 
-  override suspend fun getCountryInfo(countryCode: String): List<CountryEntity> {
+  override suspend fun getCountryInfo(countryCode: String): List<Country> {
     val list = safeApiCall(Dispatchers.IO) { restService.getCountry(countryCode) }
 
-    return list.map { CountryEntity(countryCode = countryCode, countryName = it.name?.common ?: "") }
+    return list.map { Country(countryCode = countryCode, countryName = it.name?.common ?: "") }
   }
 
-  override suspend fun getCurrentWeather(cityWeather: CityWeatherEntity): CurrentWeatherDomain {
+  override suspend fun getCurrentWeather(cityWeather: CityWeather): CurrentWeatherModel {
     return safeApiCall(Dispatchers.IO) { restService.getCurrentWeather(cityWeather.lat, cityWeather.lon) }.toDomain()
   }
 
-  override suspend fun getForecast(cityWeather: CityWeatherEntity): ForecastDomain {
+  override suspend fun getForecast(cityWeather: CityWeather): ForecastModel {
     return safeApiCall(Dispatchers.IO) { restService.getForecast(cityWeather.lat, cityWeather.lon) }.toDomain()
   }
 

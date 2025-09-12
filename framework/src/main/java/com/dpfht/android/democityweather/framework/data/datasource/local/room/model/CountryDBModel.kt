@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.dpfht.democityweather.domain.entity.CountryEntity
+import com.dpfht.democityweather.domain.model.Country
 
 @Entity(tableName = "tbl_country", indices = [Index(value = ["country_code", "country_name"], unique = true)])
 data class CountryDBModel(
@@ -17,6 +17,6 @@ data class CountryDBModel(
   val countryName: String? = "",
 )
 
-fun CountryDBModel.toDomain(): CountryEntity {
-  return CountryEntity(countryCode = this.countryCode ?: "", countryName = this.countryName ?: "")
+fun CountryDBModel.toDomain(): Country {
+  return Country(countryCode = this.countryCode ?: "", countryName = this.countryName ?: "")
 }

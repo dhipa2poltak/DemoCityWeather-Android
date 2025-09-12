@@ -1,6 +1,6 @@
-package com.dpfht.democityweather.domain.entity
+package com.dpfht.democityweather.domain.model
 
-data class WindEntity(
+data class Wind(
   val speed: Double = 0.0,
   val deg: Double = 0.0,
   val gust: Double = 0.0

@@ -4,19 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.democityweather.domain.entity.Result
-import com.dpfht.democityweather.domain.entity.vw_entity.ForecastHourlyVWEntity
-import com.dpfht.democityweather.domain.entity.vw_entity.ForecastVWEntity
-import com.dpfht.democityweather.domain.entity.vw_entity.ForecastWeeklyVWEntity
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.CurrentWeatherModel
+import com.dpfht.democityweather.domain.model.Result
+import com.dpfht.democityweather.domain.model.vw_model.ForecastHourlyVWModel
+import com.dpfht.democityweather.domain.model.vw_model.ForecastVWModel
+import com.dpfht.democityweather.domain.model.vw_model.ForecastWeeklyVWModel
 import com.dpfht.democityweather.domain.usecase.GetCurrentWeatherUseCase
 import com.dpfht.democityweather.domain.usecase.GetForecastUseCase
 import com.dpfht.democityweather.domain.util.WeatherUtil
 import com.dpfht.android.democityweather.feature_city_weather.util.ResourceUtil
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.HourlyAdapter
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.WeeklyAdapter
-import com.dpfht.democityweather.domain.entity.Result.Error
+import com.dpfht.democityweather.domain.model.Result.Error
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -41,10 +41,10 @@ class DetailsCityWeatherViewModel @Inject constructor(
   private val _tempData = MutableLiveData<Pair<String, Int>>()
   val tempData: LiveData<Pair<String, Int>> = _tempData
 
-  lateinit var cityWeather: CityWeatherEntity
+  lateinit var cityWeather: CityWeather
 
-  private val hourlyVWEntities = arrayListOf<ForecastHourlyVWEntity>()
-  private val weeklyVWEntities = arrayListOf<ForecastWeeklyVWEntity>()
+  private val hourlyVWEntities = arrayListOf<ForecastHourlyVWModel>()
+  private val weeklyVWEntities = arrayListOf<ForecastWeeklyVWModel>()
 
   private val isRefreshingEnable = true
 
@@ -79,7 +79,7 @@ class DetailsCityWeatherViewModel @Inject constructor(
     }
   }
 
-  private fun onSuccessGetCurrentWeather(currentWeather: CurrentWeatherDomain) {
+  private fun onSuccessGetCurrentWeather(currentWeather: CurrentWeatherModel) {
     var animationId = -1
 
     val temp = currentWeather.main?.temp ?: 0.0
@@ -111,7 +111,7 @@ class DetailsCityWeatherViewModel @Inject constructor(
     }
   }
 
-  private fun onSuccessGetForecast(forecastVWEntity: ForecastVWEntity) {
+  private fun onSuccessGetForecast(forecastVWEntity: ForecastVWModel) {
     for (hourly in forecastVWEntity.hourlyEntities) {
       if (hourly.description.isNotEmpty()) {
         val animationId = ResourceUtil.getAnimationResourceForWeatherDescription(hourly.description)

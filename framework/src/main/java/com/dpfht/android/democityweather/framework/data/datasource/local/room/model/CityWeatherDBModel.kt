@@ -3,7 +3,7 @@ package com.dpfht.android.democityweather.framework.data.datasource.local.room.m
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.model.CityWeather
 
 @Entity(tableName = "tbl_city_weather")
 data class CityWeatherDBModel(
@@ -22,8 +22,8 @@ data class CityWeatherDBModel(
   val lon: Double? = 0.0
 )
 
-fun CityWeatherDBModel.toDomain(): CityWeatherEntity {
-  return CityWeatherEntity(
+fun CityWeatherDBModel.toDomain(): CityWeather {
+  return CityWeather(
     id = this.id ?: 0L,
     idCity = this.idCity ?: 0L,
     countryCode = this.countryCode ?: "",

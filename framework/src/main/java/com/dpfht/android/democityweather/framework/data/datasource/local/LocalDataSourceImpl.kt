@@ -7,14 +7,14 @@ import com.dpfht.android.democityweather.framework.data.datasource.local.room.mo
 import com.dpfht.android.democityweather.framework.data.datasource.local.room.model.CountryDBModel
 import com.dpfht.android.democityweather.framework.data.datasource.local.room.model.toDomain
 import com.dpfht.democityweather.data.datasource.LocalDataSource
-import com.dpfht.democityweather.domain.entity.AppException
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CountryEntity
-import com.dpfht.democityweather.domain.entity.LocalMessage
-import com.dpfht.democityweather.domain.entity.LocalMessage.ErrorWhenGettingForecastData
-import com.dpfht.democityweather.domain.entity.LocalMessage.GeneralError
-import com.dpfht.democityweather.domain.entity.LocalMessage.NoCountryFound
+import com.dpfht.democityweather.domain.model.AppException
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.Country
+import com.dpfht.democityweather.domain.model.LocalMessage
+import com.dpfht.democityweather.domain.model.LocalMessage.ErrorWhenGettingForecastData
+import com.dpfht.democityweather.domain.model.LocalMessage.GeneralError
+import com.dpfht.democityweather.domain.model.LocalMessage.NoCountryFound
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -36,7 +36,7 @@ class LocalDataSourceImpl(
     return AppDB.obsIsDBInitialized
   }
 
-  override suspend fun getAllCity(): List<CityEntity> {
+  override suspend fun getAllCity(): List<City> {
     return try {
       val list = withContext(Dispatchers.IO) {
         appDB.cityDao().getAllCity().map { it.toDomain() }
@@ -49,7 +49,7 @@ class LocalDataSourceImpl(
     }
   }
 
-  override suspend fun getCountry(countryCode: String): List<CountryEntity> {
+  override suspend fun getCountry(countryCode: String): List<Country> {
     return try {
       val list = withContext(Dispatchers.IO) {
         appDB.countryDao().getCountry(countryCode).map { it.toDomain() }
@@ -63,7 +63,7 @@ class LocalDataSourceImpl(
     }
   }
 
-  override suspend fun saveCountry(countryEntity: CountryEntity) {
+  override suspend fun saveCountry(countryEntity: Country) {
     return try {
       withContext(Dispatchers.IO) {
         val countryDBModel = CountryDBModel(countryCode = countryEntity.countryCode, countryName = countryEntity.countryName)
@@ -76,7 +76,7 @@ class LocalDataSourceImpl(
     }
   }
 
-  override suspend fun getAllCityWeather(): List<CityWeatherEntity> {
+  override suspend fun getAllCityWeather(): List<CityWeather> {
     return try {
       val list = withContext(Dispatchers.IO) {
         appDB.cityWeatherDao().getAllCityWeather().map { it.toDomain() }
@@ -90,7 +90,7 @@ class LocalDataSourceImpl(
     }
   }
 
-  override suspend fun addCityWeather(cityEntity: CityEntity): CityWeatherEntity {
+  override suspend fun addCityWeather(cityEntity: City): CityWeather {
     return try {
       withContext(Dispatchers.IO) {
         val dbModel = CityWeatherDBModel(
@@ -111,7 +111,7 @@ class LocalDataSourceImpl(
     }
   }
 
-  override suspend fun deleteCityWeather(cityWeatherEntity: CityWeatherEntity) {
+  override suspend fun deleteCityWeather(cityWeatherEntity: CityWeather) {
     return try {
       withContext(Dispatchers.IO) {
         appDB.cityWeatherDao().deleteCityWeather(cityWeatherEntity.id)

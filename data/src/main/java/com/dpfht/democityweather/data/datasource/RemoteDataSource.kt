@@ -1,13 +1,13 @@
 package com.dpfht.democityweather.data.datasource
 
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CountryEntity
-import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.democityweather.domain.entity.ForecastDomain
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.Country
+import com.dpfht.democityweather.domain.model.CurrentWeatherModel
+import com.dpfht.democityweather.domain.model.ForecastModel
 
 interface RemoteDataSource {
 
-  suspend fun getCountryInfo(countryCode: String): List<CountryEntity>
-  suspend fun getCurrentWeather(cityWeather: CityWeatherEntity): CurrentWeatherDomain
-  suspend fun getForecast(cityWeather: CityWeatherEntity): ForecastDomain
+  suspend fun getCountryInfo(countryCode: String): List<Country>
+  suspend fun getCurrentWeather(cityWeather: CityWeather): CurrentWeatherModel
+  suspend fun getForecast(cityWeather: CityWeather): ForecastModel
 }

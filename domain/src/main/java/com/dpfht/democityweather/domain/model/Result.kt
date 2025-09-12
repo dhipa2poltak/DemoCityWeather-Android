@@ -1,4 +1,4 @@
-package com.dpfht.democityweather.domain.entity
+package com.dpfht.democityweather.domain.model
 
 sealed class Result<out T> {
   data class Success<out T>(val value: T): Result<T>()

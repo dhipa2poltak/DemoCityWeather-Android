@@ -1,9 +1,9 @@
 package com.dpfht.democityweather.domain.usecase
 
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.VoidResult
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.VoidResult
 
 interface DeleteCityWeatherUseCase {
 
-  suspend operator fun invoke(cityWeatherEntity: CityWeatherEntity): VoidResult
+  suspend operator fun invoke(cityWeatherEntity: CityWeather): VoidResult
 }

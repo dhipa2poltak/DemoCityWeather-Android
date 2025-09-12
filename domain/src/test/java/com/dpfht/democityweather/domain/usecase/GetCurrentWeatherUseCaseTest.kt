@@ -1,11 +1,11 @@
 package com.dpfht.democityweather.domain.usecase
 
-import com.dpfht.democityweather.domain.entity.AppException
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.democityweather.domain.entity.MainEntity
-import com.dpfht.democityweather.domain.entity.Result
-import com.dpfht.democityweather.domain.entity.WindEntity
+import com.dpfht.democityweather.domain.model.AppException
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.CurrentWeatherModel
+import com.dpfht.democityweather.domain.model.Main
+import com.dpfht.democityweather.domain.model.Result
+import com.dpfht.democityweather.domain.model.Wind
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertTrue
@@ -21,8 +21,8 @@ class GetCurrentWeatherUseCaseTest: BaseUseCaseTest() {
 
   private lateinit var getCurrentWeatherUseCase: GetCurrentWeatherUseCase
 
-  private val cityWeatherEntity = CityWeatherEntity(1, 101, "ID", "Jakarta", 1.0, 1.0)
-  private val currentWeather = CurrentWeatherDomain(listOf(), MainEntity(), WindEntity(), "name")
+  private val cityWeatherEntity = CityWeather(1, 101, "ID", "Jakarta", 1.0, 1.0)
+  private val currentWeather = CurrentWeatherModel(listOf(), Main(), Wind(), "name")
 
   @Before
   fun setup() {

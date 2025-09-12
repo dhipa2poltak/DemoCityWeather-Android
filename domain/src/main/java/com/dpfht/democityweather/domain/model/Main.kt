@@ -1,6 +1,6 @@
-package com.dpfht.democityweather.domain.entity
+package com.dpfht.democityweather.domain.model
 
-data class MainEntity(
+data class Main(
   val temp: Double = 0.0,
   val feelsLike: Double = 0.0,
   val tempMin: Double = 0.0,

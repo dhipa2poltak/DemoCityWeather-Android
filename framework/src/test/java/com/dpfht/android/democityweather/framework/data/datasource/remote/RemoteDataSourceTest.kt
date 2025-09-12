@@ -3,19 +3,19 @@ package com.dpfht.android.democityweather.framework.data.datasource.remote
 import android.content.Context
 import com.dpfht.android.democityweather.framework.data.datasource.remote.rest.RestService
 import com.dpfht.democityweather.data.datasource.RemoteDataSource
-import com.dpfht.democityweather.data.model.remote.response.CountryInfo
-import com.dpfht.democityweather.data.model.remote.response.CountryName
+import com.dpfht.democityweather.data.model.remote.response.CountryInfoResponse
+import com.dpfht.democityweather.data.model.remote.response.CountryNameDto
 import com.dpfht.democityweather.data.model.remote.response.CurrentWeatherResponse
 import com.dpfht.democityweather.data.model.remote.response.ForecastResponse
-import com.dpfht.democityweather.data.model.remote.response.Main
-import com.dpfht.democityweather.data.model.remote.response.Wind
-import com.dpfht.democityweather.domain.entity.AppException
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CountryEntity
-import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.democityweather.domain.entity.ForecastDomain
-import com.dpfht.democityweather.domain.entity.MainEntity
-import com.dpfht.democityweather.domain.entity.WindEntity
+import com.dpfht.democityweather.data.model.remote.response.MainDto
+import com.dpfht.democityweather.data.model.remote.response.WindDto
+import com.dpfht.democityweather.domain.model.AppException
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.Country
+import com.dpfht.democityweather.domain.model.CurrentWeatherModel
+import com.dpfht.democityweather.domain.model.ForecastModel
+import com.dpfht.democityweather.domain.model.Main
+import com.dpfht.democityweather.domain.model.Wind
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertTrue
@@ -44,7 +44,7 @@ class RemoteDataSourceTest {
 
   private val lat = 1.0
   private val lng = 1.0
-  private val cityWeatherEntity = CityWeatherEntity(1, 101, "ID", "Jakarta", lat, lng)
+  private val cityWeatherEntity = CityWeather(1, 101, "ID", "Jakarta", lat, lng)
 
   private val msg = "this is an error message"
 
@@ -55,9 +55,9 @@ class RemoteDataSourceTest {
 
   @Test
   fun `get country info successfully`() = runTest {
-    val expected = CountryEntity(countryCode, countryName)
+    val expected = Country(countryCode, countryName)
 
-    val country = CountryInfo(CountryName(countryName, countryName))
+    val country = CountryInfoResponse(CountryNameDto(countryName, countryName))
     whenever(restService.getCountry(countryCode)).thenReturn(listOf(country))
 
     val actual = remoteDataSource.getCountryInfo(countryCode).firstOrNull()
@@ -87,10 +87,10 @@ class RemoteDataSourceTest {
   @Test
   fun `get current weather successfully`() = runTest {
     val name = "Jakarta"
-    val response = CurrentWeatherResponse(listOf(), Main(), Wind(), name)
+    val response = CurrentWeatherResponse(listOf(), MainDto(), WindDto(), name)
     whenever(restService.getCurrentWeather(lat, lng)).thenReturn(response)
 
-    val expected = CurrentWeatherDomain(listOf(), MainEntity(), WindEntity(), name)
+    val expected = CurrentWeatherModel(listOf(), Main(), Wind(), name)
     val actual = remoteDataSource.getCurrentWeather(cityWeatherEntity)
 
     assertTrue(expected == actual)
@@ -120,7 +120,7 @@ class RemoteDataSourceTest {
     val response = ForecastResponse("cod", 1, 1, listOf())
     whenever(restService.getForecast(lat, lng)).thenReturn(response)
 
-    val expected = ForecastDomain(listOf())
+    val expected = ForecastModel(listOf())
     val actual = remoteDataSource.getForecast(cityWeatherEntity)
 
     assertTrue(expected == actual)

@@ -1,14 +1,14 @@
 package com.dpfht.democityweather.domain.usecase
 
-import com.dpfht.democityweather.domain.entity.AppException
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.ForecastDomain
-import com.dpfht.democityweather.domain.entity.ForecastEntity
-import com.dpfht.democityweather.domain.entity.MainEntity
-import com.dpfht.democityweather.domain.entity.Result
-import com.dpfht.democityweather.domain.entity.Result.Success
-import com.dpfht.democityweather.domain.entity.WeatherEntity
-import com.dpfht.democityweather.domain.entity.WindEntity
+import com.dpfht.democityweather.domain.model.AppException
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.ForecastModel
+import com.dpfht.democityweather.domain.model.Forecast
+import com.dpfht.democityweather.domain.model.Main
+import com.dpfht.democityweather.domain.model.Result
+import com.dpfht.democityweather.domain.model.Result.Success
+import com.dpfht.democityweather.domain.model.Weather
+import com.dpfht.democityweather.domain.model.Wind
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertFalse
@@ -26,10 +26,10 @@ class GetForecastUseCaseTest: BaseUseCaseTest() {
 
   private lateinit var getForecastUseCase: GetForecastUseCase
 
-  private val cityWeatherEntity = CityWeatherEntity(1, 101, "ID", "Jakarta", 1.0, 1.0)
-  private val weatherEntity = WeatherEntity(101, "main", "desc", "icon")
-  private val forecastEntity = ForecastEntity(100000, MainEntity(), listOf(weatherEntity), WindEntity(), "2024-01-20 05:30:45")
-  private val forecast = ForecastDomain(listOf(forecastEntity))
+  private val cityWeatherEntity = CityWeather(1, 101, "ID", "Jakarta", 1.0, 1.0)
+  private val weatherEntity = Weather(101, "main", "desc", "icon")
+  private val forecastEntity = Forecast(100000, Main(), listOf(weatherEntity), Wind(), "2024-01-20 05:30:45")
+  private val forecast = ForecastModel(listOf(forecastEntity))
 
   private val msg = "this is an error message"
 

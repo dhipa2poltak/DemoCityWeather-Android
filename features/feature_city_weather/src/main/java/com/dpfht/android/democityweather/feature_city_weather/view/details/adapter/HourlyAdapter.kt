@@ -3,7 +3,7 @@ package com.dpfht.android.democityweather.feature_city_weather.view.details.adap
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dpfht.democityweather.domain.entity.vw_entity.ForecastHourlyVWEntity
+import com.dpfht.democityweather.domain.model.vw_model.ForecastHourlyVWModel
 import com.dpfht.android.democityweather.feature_city_weather.databinding.LayoutCellHourlyBinding
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.HourlyAdapter.ViewHolder
 import javax.inject.Inject
@@ -12,7 +12,7 @@ class HourlyAdapter @Inject constructor(
 
 ): RecyclerView.Adapter<ViewHolder>() {
 
-  lateinit var hourlyVWEntities: List<ForecastHourlyVWEntity>
+  lateinit var hourlyVWEntities: List<ForecastHourlyVWModel>
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val binding = LayoutCellHourlyBinding.inflate(LayoutInflater.from(parent.context), parent, false)

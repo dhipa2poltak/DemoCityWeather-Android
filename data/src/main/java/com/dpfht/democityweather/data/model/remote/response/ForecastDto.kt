@@ -1,31 +1,31 @@
 package com.dpfht.democityweather.data.model.remote.response
 
 import androidx.annotation.Keep
-import com.dpfht.democityweather.domain.entity.ForecastEntity
+import com.dpfht.democityweather.domain.model.Forecast
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Keep
-data class Forecast(
+data class ForecastDto(
   @SerializedName("dt")
   @Expose
   val dt: Long? = 0L,
   @SerializedName("main")
   @Expose
-  val main: Main? = null,
+  val main: MainDto? = null,
   @SerializedName("weather")
   @Expose
-  val weathers: List<Weather>? = listOf(),
+  val weathers: List<WeatherDto>? = listOf(),
   @SerializedName("wind")
   @Expose
-  val wind: Wind? = null,
+  val wind: WindDto? = null,
   @SerializedName("dt_txt")
   @Expose
   val dtTxt: String? = ""
 )
 
-fun Forecast.toDomain(): ForecastEntity {
-  return ForecastEntity(
+fun ForecastDto.toDomain(): Forecast {
+  return Forecast(
     dt = this.dt ?: 0L,
     main = this.main?.toDomain(),
     weathers = this.weathers?.map { it.toDomain() } ?: listOf(),

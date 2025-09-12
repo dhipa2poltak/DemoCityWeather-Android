@@ -1,12 +1,12 @@
 package com.dpfht.democityweather.data.model.remote.response
 
 import androidx.annotation.Keep
-import com.dpfht.democityweather.domain.entity.MainEntity
+import com.dpfht.democityweather.domain.model.Main
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Keep
-data class Main(
+data class MainDto(
   @SerializedName("temp")
   @Expose
   val temp: Double? = 0.0,
@@ -33,8 +33,8 @@ data class Main(
   val groundLevel: Double? = 0.0
 )
 
-fun Main.toDomain(): MainEntity {
-  return MainEntity(
+fun MainDto.toDomain(): Main {
+  return Main(
     temp = this.temp ?: 0.0,
     feelsLike = this.feelsLike ?: 0.0,
     tempMin = this.tempMin ?: 0.0,

@@ -1,12 +1,12 @@
 package com.dpfht.android.democityweather.framework.navigation
 
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.CityWeather
 
 interface NavigationService {
 
   fun navigateToListOfCityWeather()
-  fun navigateToAddCityWeather(onSelectCity: ((cityEntity: CityEntity) -> Unit)?)
-  fun navigateToDetailsCityWeather(cityWeather: CityWeatherEntity)
+  fun navigateToAddCityWeather(onSelectCity: ((cityEntity: City) -> Unit)?)
+  fun navigateToDetailsCityWeather(cityWeather: CityWeather)
   fun navigateToErrorMessage(message: String)
 }

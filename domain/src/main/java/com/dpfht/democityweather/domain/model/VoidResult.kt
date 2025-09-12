@@ -1,4 +1,4 @@
-package com.dpfht.democityweather.domain.entity
+package com.dpfht.democityweather.domain.model
 
 sealed class VoidResult {
   object Success: VoidResult()

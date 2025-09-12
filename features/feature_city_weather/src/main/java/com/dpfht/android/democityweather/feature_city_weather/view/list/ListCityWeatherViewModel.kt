@@ -4,15 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dpfht.democityweather.domain.entity.Result
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.VoidResult
+import com.dpfht.democityweather.domain.model.Result
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.VoidResult
 import com.dpfht.democityweather.domain.usecase.AddCityWeatherUseCase
 import com.dpfht.democityweather.domain.usecase.DeleteCityWeatherUseCase
 import com.dpfht.democityweather.domain.usecase.GetAllCityWeatherUseCase
 import com.dpfht.android.democityweather.feature_city_weather.view.list.adapter.CityWeatherAdapter
-import com.dpfht.democityweather.domain.entity.Result.Error
+import com.dpfht.democityweather.domain.model.Result.Error
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,7 +22,7 @@ class ListCityWeatherViewModel @Inject constructor(
   private val getAllCityWeatherUseCase: GetAllCityWeatherUseCase,
   private val addCityWeatherUseCase: AddCityWeatherUseCase,
   private val deleteCityWeatherUseCase: DeleteCityWeatherUseCase,
-  val cityWeathers: ArrayList<CityWeatherEntity>,
+  val cityWeathers: ArrayList<CityWeather>,
   val cityWeatherAdapter: CityWeatherAdapter
 ): ViewModel() {
 
@@ -35,8 +35,8 @@ class ListCityWeatherViewModel @Inject constructor(
   private val _isRefreshing = MutableLiveData<Boolean>()
   val isRefreshing: LiveData<Boolean> = _isRefreshing
 
-  private val _navigateToWeatherDetails = MutableLiveData<CityWeatherEntity?>()
-  val navigateToWeatherDetails: LiveData<CityWeatherEntity?> = _navigateToWeatherDetails
+  private val _navigateToWeatherDetails = MutableLiveData<CityWeather?>()
+  val navigateToWeatherDetails: LiveData<CityWeather?> = _navigateToWeatherDetails
 
   private var isRefreshingDataEnabled = true
 
@@ -66,7 +66,7 @@ class ListCityWeatherViewModel @Inject constructor(
     }
   }
 
-  private fun onSuccessGetAllCityWeather(cityWeathers: List<CityWeatherEntity>) {
+  private fun onSuccessGetAllCityWeather(cityWeathers: List<CityWeather>) {
     this.cityWeathers.clear()
     this.cityWeatherAdapter.notifyDataSetChanged()
     this.cityWeathers.addAll(cityWeathers)
@@ -82,7 +82,7 @@ class ListCityWeatherViewModel @Inject constructor(
     _isRefreshing.postValue(false)
   }
 
-  fun addCityWeather(cityEntity: CityEntity) {
+  fun addCityWeather(cityEntity: City) {
     _isRefreshing.postValue(true)
 
     viewModelScope.launch {
@@ -97,7 +97,7 @@ class ListCityWeatherViewModel @Inject constructor(
     }
   }
 
-  private fun onSuccessAddCityWeather(cityWeather: CityWeatherEntity) {
+  private fun onSuccessAddCityWeather(cityWeather: CityWeather) {
     _isRefreshing.postValue(false)
     this.cityWeathers.add(cityWeather)
     this.cityWeatherAdapter.notifyItemInserted(this.cityWeathers.size - 1)
@@ -111,7 +111,7 @@ class ListCityWeatherViewModel @Inject constructor(
     _isNoData.value = this.cityWeathers.isEmpty()
   }
 
-  private fun deleteCityWeather(cityWeather: CityWeatherEntity) {
+  private fun deleteCityWeather(cityWeather: CityWeather) {
     _isRefreshing.postValue(true)
 
     viewModelScope.launch {
@@ -126,7 +126,7 @@ class ListCityWeatherViewModel @Inject constructor(
     }
   }
 
-  private fun onSuccessDeleteCityWeather(cityWeather: CityWeatherEntity) {
+  private fun onSuccessDeleteCityWeather(cityWeather: CityWeather) {
     _isRefreshing.postValue(false)
     val position = this.cityWeathers.indexOf(cityWeather)
     this.cityWeathers.remove(cityWeather)
@@ -150,7 +150,7 @@ class ListCityWeatherViewModel @Inject constructor(
     getAllCityWeather()
   }
 
-  private fun onClickCityWeather(cityWeather: CityWeatherEntity) {
+  private fun onClickCityWeather(cityWeather: CityWeather) {
     _navigateToWeatherDetails.value = cityWeather
     _navigateToWeatherDetails.postValue(null)
   }

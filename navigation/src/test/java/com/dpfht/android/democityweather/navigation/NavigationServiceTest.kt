@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
 import com.dpfht.android.democityweather.framework.navigation.NavigationService
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.model.CityWeather
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -39,7 +39,7 @@ class NavigationServiceTest {
 
   @Test
   fun `ensure navigate method is called in navController when calling navigateToDetailsCityWeather method in navigationService`() {
-    val cityWeatherEntity = CityWeatherEntity(1, 101, "ID", "Jakarta", 1.0, 1.0)
+    val cityWeatherEntity = CityWeather(1, 101, "ID", "Jakarta", 1.0, 1.0)
     navigationService.navigateToDetailsCityWeather(cityWeatherEntity)
 
     verify(navController).navigate(anyInt(), any())

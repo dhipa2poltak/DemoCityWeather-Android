@@ -4,12 +4,12 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.HourlyAdapter
 import com.dpfht.android.democityweather.feature_city_weather.view.details.adapter.WeeklyAdapter
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.democityweather.domain.entity.MainEntity
-import com.dpfht.democityweather.domain.entity.WindEntity
-import com.dpfht.democityweather.domain.entity.Result
-import com.dpfht.democityweather.domain.entity.vw_entity.ForecastVWEntity
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.CurrentWeatherModel
+import com.dpfht.democityweather.domain.model.Main
+import com.dpfht.democityweather.domain.model.Wind
+import com.dpfht.democityweather.domain.model.Result
+import com.dpfht.democityweather.domain.model.vw_model.ForecastVWModel
 import com.dpfht.democityweather.domain.usecase.GetCurrentWeatherUseCase
 import com.dpfht.democityweather.domain.usecase.GetForecastUseCase
 import kotlinx.coroutines.Dispatchers
@@ -61,10 +61,10 @@ class DetailsCityWeatherViewModelTest {
   @Mock
   private lateinit var tempDataObserver: Observer<Pair<String, Int>>
 
-  private val currentWeather = CurrentWeatherDomain(listOf(), MainEntity(), WindEntity(), "Jakarta")
-  private val forecast = ForecastVWEntity(listOf(), listOf())
+  private val currentWeather = CurrentWeatherModel(listOf(), Main(), Wind(), "Jakarta")
+  private val forecast = ForecastVWModel(listOf(), listOf())
 
-  private val cityWeatherEntity = CityWeatherEntity(1, 101, "ID", "Jakarta", 1.0, 1.0)
+  private val cityWeatherEntity = CityWeather(1, 101, "ID", "Jakarta", 1.0, 1.0)
 
   private val msg = "this is an error message"
 

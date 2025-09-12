@@ -1,5 +1,5 @@
-package com.dpfht.democityweather.domain.entity.vw_entity
-data class ForecastWeeklyVWEntity(
+package com.dpfht.democityweather.domain.model.vw_model
+data class ForecastWeeklyVWModel(
   val day: String = "",
   var minTemperature: Double = -999.0,
   var maxTemperature: Double = -999.0,

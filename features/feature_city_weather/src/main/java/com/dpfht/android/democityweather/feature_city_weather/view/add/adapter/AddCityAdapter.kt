@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dpfht.android.democityweather.feature_city_weather.R
-import com.dpfht.democityweather.domain.entity.Result
-import com.dpfht.democityweather.domain.entity.CityEntity
+import com.dpfht.democityweather.domain.model.Result
+import com.dpfht.democityweather.domain.model.City
 import com.dpfht.democityweather.domain.usecase.GetCountryUseCase
 import com.dpfht.android.democityweather.feature_city_weather.databinding.LayoutRowCityBinding
-import com.dpfht.democityweather.domain.entity.Result.Error
+import com.dpfht.democityweather.domain.model.Result.Error
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -19,14 +19,14 @@ class AddCityAdapter @Inject constructor(
   private val getCountryUseCase: GetCountryUseCase
 ): RecyclerView.Adapter<AddCityAdapter.ViewHolder>() {
 
-  lateinit var cities: ArrayList<CityEntity>
+  lateinit var cities: ArrayList<City>
 
-  private val filteredCities = arrayListOf<CityEntity>()
+  private val filteredCities = arrayListOf<City>()
   private var textFilter = ""
 
   lateinit var scope: CoroutineScope
 
-  var onSelectCity: ((cityEntity: CityEntity) -> Unit)? = null
+  var onSelectCity: ((cityEntity: City) -> Unit)? = null
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val binding = LayoutRowCityBinding.inflate(LayoutInflater.from(parent.context), parent, false)

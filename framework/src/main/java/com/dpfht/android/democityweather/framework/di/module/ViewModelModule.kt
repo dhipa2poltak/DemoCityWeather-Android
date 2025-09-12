@@ -1,7 +1,7 @@
 package com.dpfht.android.democityweather.framework.di.module
 
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.CityWeather
 import com.dpfht.democityweather.domain.repository.AppRepository
 import com.dpfht.democityweather.domain.usecase.AddCityWeatherUseCase
 import com.dpfht.democityweather.domain.usecase.AddCityWeatherUseCaseImpl
@@ -34,7 +34,7 @@ class ViewModelModule {
   }
 
   @Provides
-  fun provideCities(): ArrayList<CityEntity> {
+  fun provideCities(): ArrayList<City> {
     return arrayListOf()
   }
 
@@ -64,7 +64,7 @@ class ViewModelModule {
   }
 
   @Provides
-  fun provideCityWeathers(): ArrayList<CityWeatherEntity> {
+  fun provideCityWeathers(): ArrayList<CityWeather> {
     return arrayListOf()
   }
 

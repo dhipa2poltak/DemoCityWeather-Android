@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.CityWeather
 import com.dpfht.android.democityweather.feature_city_weather.view.add.AddCityWeatherFragment
 import com.dpfht.android.democityweather.framework.Constants
 import com.dpfht.android.democityweather.framework.navigation.NavigationService
@@ -23,14 +23,14 @@ class NavigationServiceImpl(
     navController.graph = navGraph
   }
 
-  override fun navigateToAddCityWeather(onSelectCity: ((cityEntity: CityEntity) -> Unit)?) {
+  override fun navigateToAddCityWeather(onSelectCity: ((cityEntity: City) -> Unit)?) {
     val fragment = AddCityWeatherFragment.newInstance()
     fragment.onSelectCityCallback = onSelectCity
 
     fragment.show(activity.supportFragmentManager, "ADD_CITY_WEATHER")
   }
 
-  override fun navigateToDetailsCityWeather(cityWeather: CityWeatherEntity) {
+  override fun navigateToDetailsCityWeather(cityWeather: CityWeather) {
     val args = Bundle()
     args.putSerializable(Constants.FragmentArgsName.ARG_CITY_WEATHER, cityWeather)
 

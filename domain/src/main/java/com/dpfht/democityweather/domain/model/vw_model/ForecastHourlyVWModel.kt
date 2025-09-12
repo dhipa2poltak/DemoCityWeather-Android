@@ -1,6 +1,6 @@
-package com.dpfht.democityweather.domain.entity.vw_entity
+package com.dpfht.democityweather.domain.model.vw_model
 
-data class ForecastHourlyVWEntity(
+data class ForecastHourlyVWModel(
   val strTime: String = "",
   val description: String = "",
   var animationId: Int = -1,

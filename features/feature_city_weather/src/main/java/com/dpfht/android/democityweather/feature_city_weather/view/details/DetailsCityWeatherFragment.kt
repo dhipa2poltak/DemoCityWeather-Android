@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
+import com.dpfht.democityweather.domain.model.CityWeather
 import com.dpfht.android.democityweather.feature_city_weather.R
 import com.dpfht.android.democityweather.feature_city_weather.databinding.FragmentDetailsCityWeatherBinding
 import com.dpfht.android.democityweather.framework.Constants
@@ -27,7 +27,7 @@ class DetailsCityWeatherFragment : BaseFragment<FragmentDetailsCityWeatherBindin
     binding.rvWeekly.adapter = viewModel.weeklyAdapter
 
     arguments?.let {
-      val cw = it.getSerializable(Constants.FragmentArgsName.ARG_CITY_WEATHER) as? CityWeatherEntity
+      val cw = it.getSerializable(Constants.FragmentArgsName.ARG_CITY_WEATHER) as? CityWeather
       if (cw != null) {
         viewModel.cityWeather = cw
         binding.tvCityName.text = cw.cityName

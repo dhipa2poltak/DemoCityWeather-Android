@@ -1,7 +1,7 @@
 package com.dpfht.democityweather.data.model.remote.response
 
 import androidx.annotation.Keep
-import com.dpfht.democityweather.domain.entity.ForecastDomain
+import com.dpfht.democityweather.domain.model.ForecastModel
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -18,9 +18,9 @@ data class ForecastResponse(
   val cnt: Int? = -1,
   @SerializedName("list")
   @Expose
-  val forecasts: List<Forecast>? = listOf()
+  val forecasts: List<ForecastDto>? = listOf()
 )
 
-fun ForecastResponse.toDomain(): ForecastDomain {
-  return ForecastDomain(this.forecasts?.map { it.toDomain() } ?: listOf())
+fun ForecastResponse.toDomain(): ForecastModel {
+  return ForecastModel(this.forecasts?.map { it.toDomain() } ?: listOf())
 }

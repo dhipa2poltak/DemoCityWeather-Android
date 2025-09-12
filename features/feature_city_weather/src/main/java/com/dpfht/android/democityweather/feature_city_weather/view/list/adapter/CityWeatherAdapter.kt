@@ -3,14 +3,14 @@ package com.dpfht.android.democityweather.feature_city_weather.view.list.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.CurrentWeatherModel
+import com.dpfht.democityweather.domain.model.Result
 import com.dpfht.democityweather.domain.usecase.GetCurrentWeatherUseCase
 import com.dpfht.democityweather.domain.util.WeatherUtil
 import com.dpfht.android.democityweather.feature_city_weather.databinding.LayoutRowCityWeatherBinding
 import com.dpfht.android.democityweather.feature_city_weather.util.ResourceUtil
-import com.dpfht.democityweather.domain.entity.Result.Error
+import com.dpfht.democityweather.domain.model.Result.Error
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,11 +19,11 @@ class CityWeatherAdapter @Inject constructor(
   private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase
 ): RecyclerView.Adapter<CityWeatherAdapter.ViewHolder>() {
 
-  lateinit var cityWeathers: ArrayList<CityWeatherEntity>
+  lateinit var cityWeathers: ArrayList<CityWeather>
   lateinit var scope: CoroutineScope
 
-  var onClickRowCityWeather: ((cityWeather: CityWeatherEntity) -> Unit)? = null
-  var onDeleteCityWeather: ((cityWeather: CityWeatherEntity) -> Unit)? = null
+  var onClickRowCityWeather: ((cityWeather: CityWeather) -> Unit)? = null
+  var onDeleteCityWeather: ((cityWeather: CityWeather) -> Unit)? = null
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val binding = LayoutRowCityWeatherBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -47,7 +47,7 @@ class CityWeatherAdapter @Inject constructor(
     }
   }
 
-  private fun getCurrentWeather(binding: LayoutRowCityWeatherBinding, cityWeather: CityWeatherEntity) {
+  private fun getCurrentWeather(binding: LayoutRowCityWeatherBinding, cityWeather: CityWeather) {
     scope.launch {
       when (val result = getCurrentWeatherUseCase(cityWeather)) {
         is Result.Success -> {
@@ -62,7 +62,7 @@ class CityWeatherAdapter @Inject constructor(
 
   private fun onSuccessGetCurrentWeather(
     binding: LayoutRowCityWeatherBinding,
-    currentWeather: CurrentWeatherDomain
+    currentWeather: CurrentWeatherModel
   ) {
     val temp = currentWeather.main?.temp ?: 0.0
     binding.tvTemp.text = WeatherUtil.getFormattedTemperatureString(temp)

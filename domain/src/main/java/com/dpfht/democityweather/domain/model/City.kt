@@ -1,6 +1,6 @@
-package com.dpfht.democityweather.domain.entity
+package com.dpfht.democityweather.domain.model
 
-data class CityEntity(
+data class City(
   val idCity: Long = 0L,
   val countryCode: String = "",
   val cityName: String = "",

@@ -3,8 +3,8 @@ package com.dpfht.android.democityweather.feature_city_weather.view.add
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.dpfht.android.democityweather.feature_city_weather.view.add.adapter.AddCityAdapter
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.Result
 import com.dpfht.democityweather.domain.usecase.GetAllCityUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -46,7 +46,7 @@ class AddCityWeatherViewModelTest {
   @Mock
   private lateinit var isLoadingObserver: Observer<Boolean>
 
-  private lateinit var cities: ArrayList<CityEntity>
+  private lateinit var cities: ArrayList<City>
 
   @Before
   fun setup() {
@@ -58,8 +58,8 @@ class AddCityWeatherViewModelTest {
 
   @Test
   fun `get all city successfully`() = runTest {
-    val cityEntity1 = CityEntity(101, "ID", "Jakarta", 1.0, 1.0)
-    val cityEntity2 = CityEntity(102, "ID", "Bogor", 2.0, 2.0)
+    val cityEntity1 = City(101, "ID", "Jakarta", 1.0, 1.0)
+    val cityEntity2 = City(102, "ID", "Bogor", 2.0, 2.0)
     val list = listOf(cityEntity1, cityEntity2)
 
     val result = Result.Success(list)

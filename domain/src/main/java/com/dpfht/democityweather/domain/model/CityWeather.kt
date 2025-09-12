@@ -1,8 +1,8 @@
-package com.dpfht.democityweather.domain.entity
+package com.dpfht.democityweather.domain.model
 
 import java.io.Serializable
 
-data class CityWeatherEntity(
+data class CityWeather(
   val id: Long = 0L,
   val idCity: Long = 0L,
   val countryCode: String = "",

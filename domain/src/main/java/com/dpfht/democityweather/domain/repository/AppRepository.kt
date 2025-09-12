@@ -1,23 +1,23 @@
 package com.dpfht.democityweather.domain.repository
 
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CountryEntity
-import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.democityweather.domain.entity.ForecastDomain
-import com.dpfht.democityweather.domain.entity.LocalMessage
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.Country
+import com.dpfht.democityweather.domain.model.CurrentWeatherModel
+import com.dpfht.democityweather.domain.model.ForecastModel
+import com.dpfht.democityweather.domain.model.LocalMessage
 import io.reactivex.rxjava3.core.Observable
 
 interface AppRepository {
 
-  suspend fun getAllCity(): List<CityEntity>
-  suspend fun getCountry(countryCode: String): CountryEntity
-  suspend fun saveCountry(countryEntity: CountryEntity)
+  suspend fun getAllCity(): List<City>
+  suspend fun getCountry(countryCode: String): Country
+  suspend fun saveCountry(countryEntity: Country)
   fun getStreamIsDBInitialized(): Observable<Boolean>
-  suspend fun getAllCityWeather(): List<CityWeatherEntity>
-  suspend fun addCityWeather(cityEntity: CityEntity): CityWeatherEntity
-  suspend fun deleteCityWeather(cityWeatherEntity: CityWeatherEntity)
-  suspend fun getCurrentWeather(cityWeather: CityWeatherEntity): CurrentWeatherDomain
-  suspend fun getForecast(cityWeather: CityWeatherEntity): ForecastDomain
+  suspend fun getAllCityWeather(): List<CityWeather>
+  suspend fun addCityWeather(cityEntity: City): CityWeather
+  suspend fun deleteCityWeather(cityWeatherEntity: CityWeather)
+  suspend fun getCurrentWeather(cityWeather: CityWeather): CurrentWeatherModel
+  suspend fun getForecast(cityWeather: CityWeather): ForecastModel
   fun getLocalMessage(localMessage: LocalMessage): String
 }

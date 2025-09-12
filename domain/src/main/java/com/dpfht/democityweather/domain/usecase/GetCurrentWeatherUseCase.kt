@@ -1,10 +1,10 @@
 package com.dpfht.democityweather.domain.usecase
 
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.CurrentWeatherModel
+import com.dpfht.democityweather.domain.model.Result
 
 interface GetCurrentWeatherUseCase {
 
-  suspend operator fun invoke(cityWeather: CityWeatherEntity): Result<CurrentWeatherDomain>
+  suspend operator fun invoke(cityWeather: CityWeather): Result<CurrentWeatherModel>
 }

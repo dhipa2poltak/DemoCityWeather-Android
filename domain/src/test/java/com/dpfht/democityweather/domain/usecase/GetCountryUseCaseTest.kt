@@ -1,8 +1,8 @@
 package com.dpfht.democityweather.domain.usecase
 
-import com.dpfht.democityweather.domain.entity.AppException
-import com.dpfht.democityweather.domain.entity.CountryEntity
-import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.model.AppException
+import com.dpfht.democityweather.domain.model.Country
+import com.dpfht.democityweather.domain.model.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertTrue
@@ -20,7 +20,7 @@ class GetCountryUseCaseTest: BaseUseCaseTest() {
 
   private val countryCode = "ID"
   private val countryName = "Indonesia"
-  private val countryEntity = CountryEntity(countryCode, countryName)
+  private val countryEntity = Country(countryCode, countryName)
 
   @Before
   fun setup() {

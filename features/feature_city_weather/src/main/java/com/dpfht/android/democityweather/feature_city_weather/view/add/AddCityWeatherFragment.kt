@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dpfht.democityweather.domain.entity.CityEntity
+import com.dpfht.democityweather.domain.model.City
 import com.dpfht.android.democityweather.feature_city_weather.R
 import com.dpfht.android.democityweather.feature_city_weather.databinding.FragmentAddCityWeatherBinding
 import com.dpfht.android.democityweather.framework.commons.base.BaseBottomSheetDialogFragment
@@ -20,7 +20,7 @@ class AddCityWeatherFragment : BaseBottomSheetDialogFragment<FragmentAddCityWeat
   private val viewModel by viewModels<AddCityWeatherViewModel>()
 
   private lateinit var bottomSheetBehavior: BottomSheetBehavior<View>
-  var onSelectCityCallback: ((cityEntity: CityEntity) -> Unit)? = null
+  var onSelectCityCallback: ((cityEntity: City) -> Unit)? = null
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
@@ -62,7 +62,7 @@ class AddCityWeatherFragment : BaseBottomSheetDialogFragment<FragmentAddCityWeat
     }
   }
 
-  private fun onSelectCity(cityEntity: CityEntity) {
+  private fun onSelectCity(cityEntity: City) {
     dismiss()
     onSelectCityCallback?.let { it(cityEntity) }
   }

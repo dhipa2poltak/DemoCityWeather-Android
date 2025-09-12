@@ -1,6 +1,6 @@
-package com.dpfht.democityweather.domain.entity
+package com.dpfht.democityweather.domain.model
 
-data class WeatherEntity(
+data class Weather(
   val id: Long = 0L,
   val main: String = "",
   val description: String = "",

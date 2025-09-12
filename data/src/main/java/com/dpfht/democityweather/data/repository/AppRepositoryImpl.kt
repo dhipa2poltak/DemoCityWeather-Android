@@ -2,14 +2,14 @@ package com.dpfht.democityweather.data.repository
 
 import com.dpfht.democityweather.data.datasource.LocalDataSource
 import com.dpfht.democityweather.data.datasource.RemoteDataSource
-import com.dpfht.democityweather.domain.entity.AppException
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.CityWeatherEntity
-import com.dpfht.democityweather.domain.entity.CountryEntity
-import com.dpfht.democityweather.domain.entity.CurrentWeatherDomain
-import com.dpfht.democityweather.domain.entity.ForecastDomain
-import com.dpfht.democityweather.domain.entity.LocalMessage
-import com.dpfht.democityweather.domain.entity.LocalMessage.NoCountryFound
+import com.dpfht.democityweather.domain.model.AppException
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.CityWeather
+import com.dpfht.democityweather.domain.model.Country
+import com.dpfht.democityweather.domain.model.CurrentWeatherModel
+import com.dpfht.democityweather.domain.model.ForecastModel
+import com.dpfht.democityweather.domain.model.LocalMessage
+import com.dpfht.democityweather.domain.model.LocalMessage.NoCountryFound
 import com.dpfht.democityweather.domain.repository.AppRepository
 import io.reactivex.rxjava3.core.Observable
 
@@ -18,11 +18,11 @@ class AppRepositoryImpl(
   private val remoteDataSource: RemoteDataSource
 ): AppRepository {
 
-  override suspend fun getAllCity(): List<CityEntity> {
+  override suspend fun getAllCity(): List<City> {
     return localDataSource.getAllCity()
   }
 
-  override suspend fun getCountry(countryCode: String): CountryEntity {
+  override suspend fun getCountry(countryCode: String): Country {
     try {
       val list = localDataSource.getCountry(countryCode)
       if (list.isNotEmpty()) {
@@ -44,7 +44,7 @@ class AppRepositoryImpl(
     throw AppException(getLocalMessage(NoCountryFound))
   }
 
-  override suspend fun saveCountry(countryEntity: CountryEntity) {
+  override suspend fun saveCountry(countryEntity: Country) {
     return localDataSource.saveCountry(countryEntity)
   }
 
@@ -52,23 +52,23 @@ class AppRepositoryImpl(
     return localDataSource.getStreamIsDBInitialized()
   }
 
-  override suspend fun getAllCityWeather(): List<CityWeatherEntity> {
+  override suspend fun getAllCityWeather(): List<CityWeather> {
     return localDataSource.getAllCityWeather()
   }
 
-  override suspend fun addCityWeather(cityEntity: CityEntity): CityWeatherEntity {
+  override suspend fun addCityWeather(cityEntity: City): CityWeather {
     return localDataSource.addCityWeather(cityEntity)
   }
 
-  override suspend fun deleteCityWeather(cityWeatherEntity: CityWeatherEntity) {
+  override suspend fun deleteCityWeather(cityWeatherEntity: CityWeather) {
     return localDataSource.deleteCityWeather(cityWeatherEntity)
   }
 
-  override suspend fun getCurrentWeather(cityWeather: CityWeatherEntity): CurrentWeatherDomain {
+  override suspend fun getCurrentWeather(cityWeather: CityWeather): CurrentWeatherModel {
     return remoteDataSource.getCurrentWeather(cityWeather)
   }
 
-  override suspend fun getForecast(cityWeather: CityWeatherEntity): ForecastDomain {
+  override suspend fun getForecast(cityWeather: CityWeather): ForecastModel {
     return remoteDataSource.getForecast(cityWeather)
   }
 

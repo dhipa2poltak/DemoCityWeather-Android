@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.Result
 import com.dpfht.democityweather.domain.usecase.GetAllCityUseCase
 import com.dpfht.android.democityweather.feature_city_weather.view.add.adapter.AddCityAdapter
-import com.dpfht.democityweather.domain.entity.Result.Error
+import com.dpfht.democityweather.domain.model.Result.Error
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddCityWeatherViewModel @Inject constructor(
   private val getAllCityUseCase: GetAllCityUseCase,
-  private val cities: ArrayList<CityEntity>,
+  private val cities: ArrayList<City>,
   val addCityAdapter: AddCityAdapter
 ) : ViewModel() {
 
@@ -49,7 +49,7 @@ class AddCityWeatherViewModel @Inject constructor(
     }
   }
 
-  private fun onSuccessGetAllCity(cities: List<CityEntity>) {
+  private fun onSuccessGetAllCity(cities: List<City>) {
     _isShowDialogLoading.postValue(false)
     this.cities.clear()
     this.cities.addAll(cities)

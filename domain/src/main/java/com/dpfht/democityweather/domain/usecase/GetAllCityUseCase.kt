@@ -1,10 +1,10 @@
 package com.dpfht.democityweather.domain.usecase
 
-import com.dpfht.democityweather.domain.entity.CityEntity
-import com.dpfht.democityweather.domain.entity.Result
+import com.dpfht.democityweather.domain.model.City
+import com.dpfht.democityweather.domain.model.Result
 
 interface GetAllCityUseCase {
 
-  suspend operator fun invoke(): Result<List<CityEntity>>
+  suspend operator fun invoke(): Result<List<City>>
 
 }
